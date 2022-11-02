@@ -1,14 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8403c0f4-1e3b-4bc6-973a-7c3cc420c575" name="Changes" comment="" />
+    <list default="true" id="8403c0f4-1e3b-4bc6-973a-7c3cc420c575" name="Changes" comment="Logger bug is fixed.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Halma.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Halma.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="1-init" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2GzawDiRuE5HygzgzirB0wjXlcz" />
   <component name="ProjectView">
@@ -66,8 +84,22 @@
       </pane>
     </panes>
   </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/com/company" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\AI Project\HalmaJava\halma-java\src\com\company" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\AI Project\HalmaJava\halma-java" />
+      <recent name="D:\AI Project\HalmaJava\halma-java\src" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true">
@@ -89,11 +121,47 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
+      <changelist id="8403c0f4-1e3b-4bc6-973a-7c3cc420c575" name="Changes" comment="" />
       <created>1667394102704</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1667394102704</updated>
+      <workItem from="1667394105375" duration="5422000" />
     </task>
+    <task id="LOCAL-00001" summary="Init">
+      <created>1667394328471</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1667394328471</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Logger bug is fixed.">
+      <created>1667401778438</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1667401778438</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Init" />
+    <MESSAGE value="Logger bug is fixed." />
+    <option name="LAST_COMMIT_MESSAGE" value="Logger bug is fixed." />
   </component>
 </project>
