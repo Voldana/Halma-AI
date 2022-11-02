@@ -64,7 +64,7 @@ public class Halma {
 
     public void RunGame() {
         validator = new Validator(tiles);
-        // displays everything in HalmaBoard()
+
         Board jk = new Board();
         jk.CreateBoard();
         jk.CreateTextBoxArea();
@@ -85,7 +85,7 @@ public class Halma {
 
     public void setUpGame() {
 
-        addFort();
+        gameboard.SetCampColors();
         addPieces();
         givePieceMoves();
         gameboard.AddFrame();
@@ -164,7 +164,7 @@ public class Halma {
                             clickCount--;
                         }
                     }
-                }); // end of actionListener
+                });
             }
         }
     }
@@ -259,20 +259,7 @@ public class Halma {
 
     // This is a different color - for where the pieces will belong
     // The orignal color of black will be changed to green
-    public void addFort() {
-        for (int x = 0; x < 8; x++) {
-            for (int y = 0; y < 8; y++) {
-                // designing the top left corner!
-                if ((x + y) <= 3) {
-                    gameboard.GetSquares()[x][y].setBackground(new Color(199, 236, 255));
-                }
-                // designing the bottom right corner!
-                if ((x + y) >= 11) {
-                    gameboard.GetSquares()[x][y].setBackground(new Color(255, 199, 199));
-                }
-            }
-        }
-    }
+
 
     public void addPieces() {
         homePiece = new ImageIcon("red.png"); // these are the default icons
@@ -306,6 +293,8 @@ public class Halma {
     private boolean hasJumped(){
         return Math.abs(firstX - secondX) > 1 || Math.abs(firstY - secondY) > 1;
     }
+
+
     private boolean CheckTerminal()
     {
 
@@ -314,15 +303,15 @@ public class Halma {
 
         for (int x = 0; x < 8; x++) {
             for (int y = 0; y < 8; y++) {
-                if (tiles[x][y].GetZone() == 1) {
-                    if (tiles[x][y].GetColor() == 2) {
+                if (tiles[x][y].zone == 1) {
+                    if (tiles[x][y].color == 2) {
                         redCounter++;
                         if(redCounter >= 10)
                             return true;
                     }
                 }
-                else if (tiles[x][y].GetZone() == 2) {
-                    if (tiles[x][y].GetColor() == 1) {
+                else if (tiles[x][y].zone == 2) {
+                    if (tiles[x][y].color == 1) {
                         blueCounter++;
                         if(blueCounter >= 10)
                             return true;
@@ -338,8 +327,8 @@ public class Halma {
 
         for (int x = 0; x < 8; x++) {
             for (int y = 0; y < 8; y++) {
-                if (tiles[x][y].GetZone() == (3-color)) {
-                    if (tiles[x][y].GetColor() == color) {
+                if (tiles[x][y].zone == (3-color)) {
+                    if (tiles[x][y].color == color) {
                         inOpponentCampCounter++;
                         if (inOpponentCampCounter >= 10)
                             return true;
