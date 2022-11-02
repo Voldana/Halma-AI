@@ -45,6 +45,8 @@ public class Board extends JFrame{
                 board.add(squares[x][y]);
             }
         }
+
+
     }
 
     public void CreateTextBoxArea() {
@@ -56,6 +58,12 @@ public class Board extends JFrame{
         jpText.add(scroll);
         jpNavigationRight.add(jpText);
         add(jpNavigationRight, BorderLayout.SOUTH);
+    }
+
+
+
+    public void AddFrame(){
+        add(board, BorderLayout.CENTER);
     }
 
     public void PrintText(String text){

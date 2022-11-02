@@ -4,7 +4,7 @@ import java.util.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class Halma extends JFrame {
+public class Halma extends JFrame{
 
     // Menu Items
     private JMenuItem mItemExit;
@@ -39,19 +39,38 @@ public class Halma extends JFrame {
 
     public Halma() {
 
+    }
+
+    public void RunGame(){
+        // displays everything in HalmaBoard()
+        Board jk = new Board();
+        jk.CreateBoard();
+        jk.CreateTextBoxArea();
+        gameboard = jk;
+
+
         setUpGame();
         turnButton();
+
+
+        // main layout
+        jk.setTitle("Halma");
+        jk.setVisible(true);
+        jk.pack();
+        jk.setSize(648, 800);
+        jk.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // closes frame
+        jk.setLocationRelativeTo(null);
+        jk.setVisible(true); // makes HalmaBoard visible
     }
 
     public void setUpGame() {
 
-        gameboard.CreateBoard();
-        gameboard.CreateTextBoxArea();
+
         addFort();
         addPieces();
-        addMenu();
+      //  addMenu();
         givePieceMoves();
-        add(gameboard.GetBoard(), BorderLayout.CENTER);
+        gameboard.AddFrame();
     }
 
     public void turnButton() {
@@ -253,62 +272,4 @@ public class Halma extends JFrame {
         gameboard.GetSquares()[firstX][firstY].setIcon(empty);
     } // end method movePiece
 
-    public void addMenu() {
-        // Create and set JMenu Bar - Options: File, Help
-        JMenuBar mBar = new JMenuBar();
-        setJMenuBar(mBar);
-
-        // Game options - restart
-        JMenu mGame = new JMenu("Game");
-        mBar.add(mGame);
-        // option of King/Queen Layout
-        JMenuItem mReset = new JMenuItem("New Game");
-        mGame.add(mReset);
-
-        // Tells user who made this game
-        mReset.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent ae) {
-                addFort();
-                addPieces();
-                addMenu();
-                prevFirstX = 99;
-                prevFirstY = 99;
-                prevSecondY = 99;
-                prevSecondX = 99;
-                clickCount = 1;
-                playerTurn = -5;
-                moveCount = 0;
-                playerTurn = 0;
-
-                grandTotalMoves = 0;
-                movedAdjacent = false;
-                gameboard.ClearTextBox();
-            }
-        });
-
-        // Add menu item Exit
-        mItemExit = new JMenuItem("Exit");
-        mGame.add(mItemExit);
-        mItemExit.addActionListener(new ActionListener() {
-            // adding action listener for exit
-            public void actionPerformed(ActionEvent ae) {
-                System.exit(0);
-            }
-        });
-
-    }
-
-    public void RunGame(){
-        // displays everything in HalmaBoard()
-        Halma jk = new Halma();
-
-        // main layout
-        jk.setTitle("Halma");
-        jk.setVisible(true);
-        jk.pack();
-        jk.setSize(648, 800);
-        jk.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // closes frame
-        jk.setLocationRelativeTo(null);
-        jk.setVisible(true); // makes HalmaBoard visible
-    }
 }
