@@ -28,6 +28,10 @@ public class Board extends JFrame {
         return jpNavigationRight;
     }
 
+    private Icon homePiece = new ImageIcon();
+    private Icon awayPiece = new ImageIcon();
+    private Icon empty = new ImageIcon("empty");
+
     public void CreateBoard() {
 
         // Halma Board Layout - this creates the whole board
@@ -72,6 +76,25 @@ public class Board extends JFrame {
             }
         }
     }
+
+    public void AddMarbles() {
+        homePiece = new ImageIcon("red.png"); // these are the default icons
+        awayPiece = new ImageIcon("blue.png"); // these are the default icons
+        for (int x = 0; x < 8; x++) {
+            for (int y = 0; y < 8; y++) {
+                // designing the top left corner!
+                if ((x + y) <= 3) {
+                    squares[x][y].setIcon(awayPiece);
+                }
+                // designing the bottom right corner!
+                else if ((x + y) >= 11) {
+                    squares[x][y].setIcon(homePiece);
+                } else {
+                    squares[x][y].setIcon(empty);
+                }
+            }
+        }
+    } // end method addPieces
 
 
     public void AddFrame() {
