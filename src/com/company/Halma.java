@@ -22,7 +22,7 @@ public class Halma {
 
     private Validator validator;
     private JButton jbEndTurn;
-    private int playerTurn;
+    private int playerTurn = 1;
     private int moveCount = 0;
 
     // Total moves in current game
@@ -82,29 +82,44 @@ public class Halma {
 
         gameboard.SetCampColors();
         gameboard.AddMarbles();
-        givePieceMoves();
-
+//        givePieceMoves();
+        startGame();
         gameboard.AddFrame();
     }
 
     private void startGame(){
-//        if(playerTurn == 0)
+            doRandomAction(playerTurn);
 
+/*        List<Tile> legalTiles = new LinkedList<>();
+        validator.findPossibleMoves(tiles[0][0],legalTiles,tiles[0][0],true);
+        for(Tile tile: legalTiles)
+            System.out.println("X:" + tile.x + "Y: " + tile.y);*/
     }
 
-/*    private void doRandomAction(int playerTurn){
+    private void doRandomAction(int playerTurn){
         List<Move> possibleMoves = new LinkedList<>();
         for(int i = 0; i < 8; i++)
             for(int j = 0; j < 8; j++)
-                if(tiles[i][j].color == playerTurn)
-                    possibleMoves.addAll(validator.findPossibleMoves(i,j));
+                if(tiles[i][j].color == playerTurn){
+                    firstX = i; firstY = j;
+                    List<Tile> legalTiles = new LinkedList<>();
+                    validator.findPossibleMoves(tiles[firstX][firstY],legalTiles,tiles[firstX][firstY],true);
+                    possibleMoves.addAll(createPossibleMoves(legalTiles));
+                }
         var random = new Random().nextInt(possibleMoves.size() - 1);
-        firstX = possibleMoves.get(random).startPos.x;
+/*        firstX = possibleMoves.get(random).startPos.x;
         firstY = possibleMoves.get(random).startPos.y;
         secondX = possibleMoves.get(random).finalPos.x;
-        secondY = possibleMoves.get(random).finalPos.y;
-        movePiece();
-    }*/
+        secondY = possibleMoves.get(random).finalPos.y;*/
+        movePiece(possibleMoves.get(random));
+    }
+
+    private List<Move> createPossibleMoves(List<Tile> possibleTiles){
+        List<Move> possibleMoves = new LinkedList<>();
+        for(Tile tile: possibleTiles)
+            possibleMoves.add(new Move(tiles[firstX][firstY] , tile));
+        return possibleMoves;
+    }
     public void turnButton() {
 
         JPanel buttonsPanel = new JPanel();
@@ -166,7 +181,7 @@ public class Halma {
                             // validation - if validates do movePiece
                             if (isMoveLegal()) {
                                 validator.movedOnce = true;
-                                movePiece();
+//                                movePiece();
                                 prevSecondX = secondX;
                                 prevSecondY = secondY;
                                 prevFirstX = firstX;
@@ -210,17 +225,25 @@ public class Halma {
             moveCount = 0;
             return playerTurn = player;
         }
+
     }
 
 
 
-    public void movePiece() {
-        if(hasJumped())
-            validator.jumped = true;
+    public void movePiece(Move move) {
+/*        if(hasJumped())
+            validator.jumped = true;*/
+        firstX = move.startPos.x;
+        firstY = move.startPos.y;
+        secondX = move.finalPos.x;
+        secondY = move.finalPos.y;
+        System.out.println("Moved " + firstX + firstY +" To " + secondX + secondY);
         tiles[secondX][secondY].color = tiles[firstX][firstY].color;
         tiles[firstX][firstY].color = 0;
         gameboard.GetSquares()[secondX][secondY].setIcon(firstSelectionIcon);
         gameboard.GetSquares()[firstX][firstY].setIcon(empty);
+        changeTurn(playerTurn);
+        startGame();
     }
 
     private boolean hasJumped(){
