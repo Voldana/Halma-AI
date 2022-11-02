@@ -267,4 +267,47 @@ public class Halma {
         gameboard.GetSquares()[firstX][firstY].setIcon(empty);
     } // end method movePiece
 
+    private boolean CheckTerminal()
+    {
+
+        int redCounter = 0;
+        int blueCounter = 0;
+
+        for (int x = 0; x < 8; x++) {
+            for (int y = 0; y < 8; y++) {
+                if (tiles[x][y].GetZone() == 1) {
+                    if (tiles[x][y].GetColor() == 2) {
+                        redCounter++;
+                        if(redCounter >= 10)
+                            return true;
+                    }
+                }
+                else if (tiles[x][y].GetZone() == 2) {
+                    if (tiles[x][y].GetColor() == 1) {
+                        blueCounter++;
+                        if(blueCounter >= 10)
+                            return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+    private boolean CheckTerminal(int color) {
+
+        int inOpponentCampCounter = 0;
+
+        for (int x = 0; x < 8; x++) {
+            for (int y = 0; y < 8; y++) {
+                if (tiles[x][y].GetZone() == (3-color)) {
+                    if (tiles[x][y].GetColor() == color) {
+                        inOpponentCampCounter++;
+                        if (inOpponentCampCounter >= 10)
+                            return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
 }
