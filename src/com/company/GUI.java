@@ -2,8 +2,9 @@ package com.company;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.List;
 
-public class Board extends JFrame {
+public class GUI extends JFrame {
 
     private JPanel board;
     private JButton[][] squares = new JButton[8][8];
@@ -28,7 +29,6 @@ public class Board extends JFrame {
     private Icon empty = new ImageIcon("empty");
 
     public void CreateBoard() {
-
 
         board = new JPanel(new GridLayout(8, 8));
         board.setSize(400, 400);
@@ -62,8 +62,9 @@ public class Board extends JFrame {
     public void SetCampColors() {
         for (int x = 0; x < 8; x++) {
             for (int y = 0; y < 8; y++) {
+                squares[x][y].setBackground(new Color(255, 255, 255));
                 if ((x + y) <= 3) {
-                    squares[x][y].setBackground(new Color(199, 236, 255));
+                    squares[x][y].setBackground(new Color(199, 230, 255));
                 }
                 if ((x + y) >= 11) {
                     squares[x][y].setBackground(new Color(255, 199, 199));
@@ -80,9 +81,7 @@ public class Board extends JFrame {
 
                 if ((x + y) <= 3) {
                     squares[x][y].setIcon(awayPiece);
-                }
-
-                else if ((x + y) >= 11) {
+                } else if ((x + y) >= 11) {
                     squares[x][y].setIcon(homePiece);
                 } else {
                     squares[x][y].setIcon(empty);
@@ -91,6 +90,27 @@ public class Board extends JFrame {
         }
     }
 
+    public void UpdateGUI(Tile[][] tiles) {
+        for (int x = 0; x < 8; x++) {
+            for (int y = 0; y < 8; y++) {
+                if(tiles[x][y].color == 1){
+                    squares[x][y].setIcon(awayPiece);
+                }
+                else if(tiles[x][y].color == 2){
+                    squares[x][y].setIcon(homePiece);
+                }
+                else {
+                    squares[x][y].setIcon(empty);
+                }
+            }
+        }
+    }
+
+    public void ShowPossibleMoves(List<Tile> possibleTiles){
+        for(Tile tile : possibleTiles){
+            squares[tile.x][tile.y].setBackground(Color.green);
+        }
+    }
 
     public void AddFrame() {
         add(board, BorderLayout.CENTER);

@@ -14,7 +14,7 @@ public class Halma {
     private int firstX, firstY, secondX, secondY, prevFirstX, prevFirstY, prevSecondX, prevSecondY;
 
     private int firstSelectionLen;
-    private int clickCount = 1;
+    private boolean firstClick = true;
     private String firstSelectionStr;
 
     private Validator validator;
@@ -30,7 +30,7 @@ public class Halma {
     private boolean movedAdjacent = false;
 
 
-    Board gameboard = new Board();
+    GUI gameUI = new GUI();
 
     public Halma() {
         tiles = new Tile[8][8];
@@ -57,10 +57,10 @@ public class Halma {
     public void RunGame() {
         validator = new Validator(tiles);
 
-        Board jk = new Board();
+        GUI jk = new GUI();
         jk.CreateBoard();
         jk.CreateTextBoxArea();
-        gameboard = jk;
+        gameUI = jk;
 
         setUpGame();
         turnButton();
@@ -77,10 +77,10 @@ public class Halma {
 
     public void setUpGame() {
 
-        gameboard.SetCampColors();
-        gameboard.AddMarbles();
+        gameUI.SetCampColors();
+        gameUI.AddMarbles();
         givePieceMoves();
-        gameboard.AddFrame();
+        gameUI.AddFrame();
     }
 
     public void turnButton() {
@@ -102,20 +102,20 @@ public class Halma {
             }
         });
         buttonsPanel.add(jbEndTurn);
-        gameboard.GetJpanel().add(buttonsPanel);
+        gameUI.GetJpanel().add(buttonsPanel);
 
     }
 
 
     public void givePieceMoves() {
         // Iterate through every piece in board
-        for (int x = 0; x < gameboard.GetSquares().length; x++) {
-            for (int y = 0; y < gameboard.GetSquares().length; y++) {
+        for (int x = 0; x < gameUI.GetSquares().length; x++) {
+            for (int y = 0; y < gameUI.GetSquares().length; y++) {
 
                 // Add action listener to every piece in the board
-                gameboard.GetSquares()[x][y].addActionListener(new ActionListener() {
+                gameUI.GetSquares()[x][y].addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent ae) {
-                        if (clickCount == 1) { // save information about first click
+                        if (firstClick) { // save information about first click
 
                             String selectionText = ((JButton) ae.getSource()).getText();
                             firstSelectionIcon = ((JButton) ae.getSource()).getIcon();
@@ -126,14 +126,15 @@ public class Halma {
                             firstSelectionStr = firstSelectionIcon.toString();
                             firstSelectionLen = firstSelectionStr.length();
 
-                            if (!firstSelectionIcon.equals(empty)) {
-                                gameboard.PrintText("You have selected %s at %d, %d\n", firstSelectionStr, firstSelectionLen, firstX, firstY);
-
+                            if (tiles[firstX][firstY].color != 0) {
+                                gameUI.PrintText("You have selected %s at %d, %d\n", firstSelectionStr, firstSelectionLen, firstX, firstY);
+                                gameUI.ShowPossibleMoves(validator.findPossibleMoves(firstX,firstY));
                             } else {
-                                gameboard.PrintText("You have selected an empty spot.\n");
+                                gameUI.PrintText("You have selected an empty spot.\n");
+                                gameUI.SetCampColors();
                             }
 
-                            clickCount++;
+                            firstClick = false;
                         } else { // save information about second click
                             String selectionText = ((JButton) ae.getSource()).getText();
                             secondSelectionIcon = ((JButton) ae.getSource()).getIcon();
@@ -144,6 +145,7 @@ public class Halma {
                             // validation - if validates do movePiece
                             if (isMoveLegal()) {
                                 validator.movedOnce = true;
+                                gameUI.SetCampColors();
                                 movePiece();
                                 prevSecondX = secondX;
                                 prevSecondY = secondY;
@@ -153,7 +155,7 @@ public class Halma {
                                 grandTotalMoves++;
                                 //todo: checks if there is a winner here
                             }
-                            clickCount--;
+                            firstClick = true;
                         }
                     }
                 });
@@ -172,13 +174,13 @@ public class Halma {
     public int changeTurn(int player) {
         validator.endTurn();
         if (player == 0) {
-            gameboard.PrintText("Player 1 has ended their turn.\n");
+            gameUI.PrintText("Player 1 has ended their turn.\n");
             player++;
             movedAdjacent = false;
             moveCount = 0;
             return playerTurn = player;
         } else {
-            gameboard.PrintText("Player 2 has ended their turn.\n");
+            gameUI.PrintText("Player 2 has ended their turn.\n");
             movedAdjacent = false;
             moveCount = 0;
             return playerTurn = player;
@@ -192,8 +194,9 @@ public class Halma {
             validator.jumped = true;
         tiles[secondX][secondY].color = tiles[firstX][firstY].color;
         tiles[firstX][firstY].color = 0;
-        gameboard.GetSquares()[secondX][secondY].setIcon(firstSelectionIcon);
-        gameboard.GetSquares()[firstX][firstY].setIcon(empty);
+        //gameUI.GetSquares()[secondX][secondY].setIcon(firstSelectionIcon);
+        //gameUI.GetSquares()[firstX][firstY].setIcon(empty);
+        gameUI.UpdateGUI(tiles);
     }
 
     private boolean hasJumped(){
