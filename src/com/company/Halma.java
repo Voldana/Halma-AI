@@ -1,13 +1,16 @@
 package com.company;
 
 import java.awt.event.*;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 import javax.swing.*;
 
 public class Halma {
 
 
     private Icon empty = new ImageIcon("empty");
+    private int player;
 
     // Coordinates and Icons for first and second click
     private Icon firstSelectionIcon, secondSelectionIcon;
@@ -80,9 +83,28 @@ public class Halma {
         gameboard.SetCampColors();
         gameboard.AddMarbles();
         givePieceMoves();
+
         gameboard.AddFrame();
     }
 
+    private void startGame(){
+//        if(playerTurn == 0)
+
+    }
+
+/*    private void doRandomAction(int playerTurn){
+        List<Move> possibleMoves = new LinkedList<>();
+        for(int i = 0; i < 8; i++)
+            for(int j = 0; j < 8; j++)
+                if(tiles[i][j].color == playerTurn)
+                    possibleMoves.addAll(validator.findPossibleMoves(i,j));
+        var random = new Random().nextInt(possibleMoves.size() - 1);
+        firstX = possibleMoves.get(random).startPos.x;
+        firstY = possibleMoves.get(random).startPos.y;
+        secondX = possibleMoves.get(random).finalPos.x;
+        secondY = possibleMoves.get(random).finalPos.y;
+        movePiece();
+    }*/
     public void turnButton() {
 
         JPanel buttonsPanel = new JPanel();
@@ -152,6 +174,7 @@ public class Halma {
                                 moveCount++;
                                 grandTotalMoves++;
                                 //todo: checks if there is a winner here
+//                                turnButton();
                             }
                             clickCount--;
                         }
@@ -162,9 +185,13 @@ public class Halma {
     }
 
     private boolean isMoveLegal(){
-        List<Tile> legalMoves = validator.findPossibleMoves(firstX,firstY);
+        List<Tile> legalTiles = new LinkedList<>();
+        validator.findPossibleMoves(tiles[firstX][firstY],legalTiles,tiles[firstX][firstY],true);
         Tile targetTile = tiles[secondX][secondY];
-        if(legalMoves.contains(targetTile))
+/*        for(Move move: legalMoves)
+            if(move.finalPos == targetTile)
+                return true;*/
+        if(legalTiles.contains(targetTile))
             return true;
         return false;
     }
