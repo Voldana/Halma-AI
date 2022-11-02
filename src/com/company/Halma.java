@@ -1,23 +1,18 @@
 package com.company;
 
-import java.awt.*;
-import java.util.*;
 import java.awt.event.*;
 import java.util.List;
 import javax.swing.*;
 
 public class Halma {
 
-    // Menu Items
-    private JMenuItem mItemExit;
-    // Board Icons
 
     private Icon empty = new ImageIcon("empty");
 
     // Coordinates and Icons for first and second click
     private Icon firstSelectionIcon, secondSelectionIcon;
     private int firstX, firstY, secondX, secondY, prevFirstX, prevFirstY, prevSecondX, prevSecondY;
-    // Useful adaptations of first click
+
     private int firstSelectionLen;
     private int clickCount = 1;
     private String firstSelectionStr;
@@ -156,7 +151,7 @@ public class Halma {
                                 prevFirstY = firstY;
                                 moveCount++;
                                 grandTotalMoves++;
-                                // isWinner(); // checks if there is a winner
+                                //todo: checks if there is a winner here
                             }
                             clickCount--;
                         }
@@ -199,7 +194,7 @@ public class Halma {
         tiles[firstX][firstY].color = 0;
         gameboard.GetSquares()[secondX][secondY].setIcon(firstSelectionIcon);
         gameboard.GetSquares()[firstX][firstY].setIcon(empty);
-    } // end method movePiece
+    }
 
     private boolean hasJumped(){
         return Math.abs(firstX - secondX) > 1 || Math.abs(firstY - secondY) > 1;
