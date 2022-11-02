@@ -8,7 +8,7 @@ import java.util.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class Board extends JFrame{
+public class Board extends JFrame {
 
     private JPanel board;
     private JButton[][] squares = new JButton[8][8];
@@ -16,19 +16,19 @@ public class Board extends JFrame{
     private JTextArea jPrintArea;
     JPanel jpNavigationRight = new JPanel(new GridLayout(0, 1));
 
-    public JPanel GetBoard(){
+    public JPanel GetBoard() {
         return board;
     }
 
-    public JButton[][] GetSquares(){
+    public JButton[][] GetSquares() {
         return squares;
     }
 
-    public JPanel GetJpanel(){
+    public JPanel GetJpanel() {
         return jpNavigationRight;
     }
 
-    public void CreateBoard(){
+    public void CreateBoard() {
 
         // Halma Board Layout - this creates the whole board
         board = new JPanel(new GridLayout(8, 8));
@@ -61,22 +61,23 @@ public class Board extends JFrame{
     }
 
 
-
-    public void AddFrame(){
+    public void AddFrame() {
         add(board, BorderLayout.CENTER);
     }
 
-    public void PrintText(String text){
+    public void PrintText(String text) {
         jPrintArea.append(text);
     }
-    public void PrintText(String text, int x, int y){
+
+    public void PrintText(String text, int x, int y) {
         jPrintArea.append(String.format(text, x, y));
     }
-    public void PrintText(String text,String select, int length, int x, int y){
-        jPrintArea.append(String.format(text,select.substring(0, length - 4), x, y));
+
+    public void PrintText(String text, String select, int length, int x, int y) {
+        jPrintArea.append(String.format(text, select.substring(0, length - 4), x, y));
     }
 
-    public void ClearTextBox(){
+    public void ClearTextBox() {
         jPrintArea.setText(null);
     }
 

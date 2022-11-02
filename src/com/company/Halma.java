@@ -1,10 +1,11 @@
 package com.company;
+
 import java.awt.*;
 import java.util.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class Halma extends JFrame{
+public class Halma {
 
     // Menu Items
     private JMenuItem mItemExit;
@@ -34,24 +35,21 @@ public class Halma extends JFrame{
     private boolean movedAdjacent = false;
 
 
-
     Board gameboard = new Board();
 
     public Halma() {
 
     }
 
-    public void RunGame(){
+    public void RunGame() {
         // displays everything in HalmaBoard()
         Board jk = new Board();
         jk.CreateBoard();
         jk.CreateTextBoxArea();
         gameboard = jk;
 
-
         setUpGame();
         turnButton();
-
 
         // main layout
         jk.setTitle("Halma");
@@ -65,10 +63,8 @@ public class Halma extends JFrame{
 
     public void setUpGame() {
 
-
         addFort();
         addPieces();
-      //  addMenu();
         givePieceMoves();
         gameboard.AddFrame();
     }
@@ -97,7 +93,6 @@ public class Halma extends JFrame{
     }
 
 
-
     public void givePieceMoves() {
         // Iterate through every piece in board
         for (int x = 0; x < gameboard.GetSquares().length; x++) {
@@ -118,10 +113,10 @@ public class Halma extends JFrame{
                             firstSelectionLen = firstSelectionStr.length();
 
                             if (!firstSelectionIcon.equals(empty)) {
-                                gameboard.PrintText("You have selected %s at %d, %d%n", firstSelectionStr,firstSelectionLen, firstX, firstY);
+                                gameboard.PrintText("You have selected %s at %d, %d\n", firstSelectionStr, firstSelectionLen, firstX, firstY);
 
                             } else {
-                                gameboard.PrintText("You have selected an empty spot.%n");
+                                gameboard.PrintText("You have selected an empty spot.\n");
                             }
 
                             clickCount++;
@@ -141,7 +136,7 @@ public class Halma extends JFrame{
                                 prevFirstY = firstY;
                                 moveCount++;
                                 grandTotalMoves++;
-                               // isWinner(); // checks if there is a winner
+                                // isWinner(); // checks if there is a winner
                             }
                             clickCount--;
                         }
@@ -155,11 +150,11 @@ public class Halma extends JFrame{
         // is the first move the same as the previous first piece move?
         if (moveCount > 0) {
             if (firstX != prevSecondX && firstY != prevSecondY) {
-                gameboard.PrintText("You have already moved a piece to %d, %d%n", prevSecondX, prevSecondY);
+                gameboard.PrintText("You have already moved a piece to %d, %d\n", prevSecondX, prevSecondY);
                 return false;
             }
             if (secondY == prevFirstY && secondX == prevFirstX) {
-                gameboard.PrintText("You you cannot move back to %d, %d%n", prevSecondX, prevSecondY);
+                gameboard.PrintText("You you cannot move back to %d, %d\n", prevSecondX, prevSecondY);
                 return false;
             }
 
@@ -169,7 +164,7 @@ public class Halma extends JFrame{
         if (!firstSelectionIcon.equals(empty) && secondSelectionIcon.equals(empty)) { // move to adjacent spot
             if (Math.abs(secondX - firstX) <= 1 && Math.abs(secondY - firstY) <= 1) {
                 if (moveCount == 0) {
-                    gameboard.PrintText("You have moved to %d, %d%n", secondX, secondY);
+                    gameboard.PrintText("You have moved to %d, %d\n", secondX, secondY);
                     movedAdjacent = true;
                     return true;
                 } else {
@@ -180,10 +175,10 @@ public class Halma extends JFrame{
                     (Math.abs(secondY - firstY) == 0 || Math.abs(secondY - firstY) == 2)) { // jumping pieces
                 if (checkJumpedPiece()) { // if there is a piece being jumped over
                     if (movedAdjacent == true) {
-                        gameboard.PrintText("You cannot move here%n");
+                        gameboard.PrintText("You cannot move here\n");
                         return false;
                     } else {
-                        gameboard.PrintText("You have moved to %d, %d%n", secondX, secondY);
+                        gameboard.PrintText("You have moved to %d, %d\n", secondX, secondY);
                         movedAdjacent = false;
                         return true;
                     }
@@ -192,26 +187,26 @@ public class Halma extends JFrame{
         }
         // Print appropriate message for invalid moves
         if (firstSelectionIcon.equals(empty)) {
-            gameboard.PrintText("Empty spot deselected.%n");
+            gameboard.PrintText("Empty spot deselected.\n");
             return false;
         } else if (secondSelectionIcon.equals(firstSelectionIcon)) {
-            gameboard.PrintText(firstSelectionStr.substring(0, firstSelectionLen - 4) + " has been deselected%n");
+            gameboard.PrintText(firstSelectionStr.substring(0, firstSelectionLen - 4) + " has been deselected\n");
             return false;
         } else {
-            gameboard.PrintText("You cannot move here%n");
+            gameboard.PrintText("You cannot move here\n");
             return false;
         }
     }
 
     public int changeTurn(int player) {
         if (player == 0) {
-            gameboard.PrintText("Player 1 has ended their turn.%n");
+            gameboard.PrintText("Player 1 has ended their turn.\n");
             player++;
             movedAdjacent = false;
             moveCount = 0;
             return playerTurn = player;
         } else {
-            gameboard.PrintText("Player 2 has ended their turn.%n");
+            gameboard.PrintText("Player 2 has ended their turn.\n");
             movedAdjacent = false;
             moveCount = 0;
             return playerTurn = player;
