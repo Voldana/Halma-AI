@@ -12,10 +12,6 @@ public class GUI extends JFrame {
     private JTextArea jPrintArea;
     JPanel jpNavigationRight = new JPanel(new GridLayout(0, 1));
 
-    public JPanel GetBoard() {
-        return board;
-    }
-
     public JButton[][] GetSquares() {
         return squares;
     }

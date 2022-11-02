@@ -11,7 +11,7 @@ public class Halma {
 
     // Coordinates and Icons for first and second click
     private Icon firstSelectionIcon, secondSelectionIcon;
-    private int firstX, firstY, secondX, secondY, prevFirstX, prevFirstY, prevSecondX, prevSecondY;
+    private int firstX, firstY, secondX, secondY, prevFirstX, prevFirstY;
 
     private int firstSelectionLen;
     private boolean firstClick = true;
@@ -19,7 +19,7 @@ public class Halma {
 
     private Validator validator;
     private JButton jbEndTurn;
-    private int playerTurn;
+    private int playerTurn = 1;
     private int moveCount = 0;
 
     // Total moves in current game
@@ -34,19 +34,20 @@ public class Halma {
 
     public Halma() {
         tiles = new Tile[8][8];
+        playerTurn = 1;
         assignCoordinates();
+
     }
 
     private void assignCoordinates() {
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
-                tiles[i][j] = new Tile(i,j);
+                tiles[i][j] = new Tile(i, j);
 
-                if((i+j) <= 3){
+                if ((i + j) <= 3) {
                     tiles[i][j].color = 1;
                     tiles[i][j].zone = 1;
-                }
-                else if((i+j) >= 11){
+                } else if ((i + j) >= 11) {
                     tiles[i][j].color = 2;
                     tiles[i][j].zone = 2;
                 }
@@ -108,14 +109,15 @@ public class Halma {
 
 
     public void givePieceMoves() {
-        // Iterate through every piece in board
+
         for (int x = 0; x < gameUI.GetSquares().length; x++) {
             for (int y = 0; y < gameUI.GetSquares().length; y++) {
 
                 // Add action listener to every piece in the board
                 gameUI.GetSquares()[x][y].addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent ae) {
-                        if (firstClick) { // save information about first click
+                        gameUI.SetCampColors();
+                        if (firstClick) {
 
                             String selectionText = ((JButton) ae.getSource()).getText();
                             firstSelectionIcon = ((JButton) ae.getSource()).getIcon();
@@ -126,15 +128,14 @@ public class Halma {
                             firstSelectionStr = firstSelectionIcon.toString();
                             firstSelectionLen = firstSelectionStr.length();
 
-                            if (tiles[firstX][firstY].color != 0) {
+                            if (tiles[firstX][firstY].color == (playerTurn)) {
                                 gameUI.PrintText("You have selected %s at %d, %d\n", firstSelectionStr, firstSelectionLen, firstX, firstY);
-                                gameUI.ShowPossibleMoves(validator.findPossibleMoves(firstX,firstY));
+                                gameUI.ShowPossibleMoves(validator.findPossibleMoves(firstX, firstY));
+                                firstClick = false;
                             } else {
                                 gameUI.PrintText("You have selected an empty spot.\n");
-                                gameUI.SetCampColors();
                             }
 
-                            firstClick = false;
                         } else { // save information about second click
                             String selectionText = ((JButton) ae.getSource()).getText();
                             secondSelectionIcon = ((JButton) ae.getSource()).getIcon();
@@ -142,13 +143,9 @@ public class Halma {
                             secondX = Integer.parseInt(arr[0]);
                             secondY = Integer.parseInt(arr[1]);
 
-                            // validation - if validates do movePiece
                             if (isMoveLegal()) {
                                 validator.movedOnce = true;
-                                gameUI.SetCampColors();
                                 movePiece();
-                                prevSecondX = secondX;
-                                prevSecondY = secondY;
                                 prevFirstX = firstX;
                                 prevFirstY = firstY;
                                 moveCount++;
@@ -163,49 +160,39 @@ public class Halma {
         }
     }
 
-    private boolean isMoveLegal(){
-        List<Tile> legalMoves = validator.findPossibleMoves(firstX,firstY);
+    private boolean isMoveLegal() {
+        List<Tile> legalMoves = validator.findPossibleMoves(firstX, firstY);
         Tile targetTile = tiles[secondX][secondY];
-        if(legalMoves.contains(targetTile))
+        if (legalMoves.contains(targetTile))
             return true;
         return false;
     }
 
-    public int changeTurn(int player) {
+    public void changeTurn(int player) {
         validator.endTurn();
-        if (player == 0) {
-            gameUI.PrintText("Player 1 has ended their turn.\n");
-            player++;
-            movedAdjacent = false;
-            moveCount = 0;
-            return playerTurn = player;
-        } else {
-            gameUI.PrintText("Player 2 has ended their turn.\n");
-            movedAdjacent = false;
-            moveCount = 0;
-            return playerTurn = player;
-        }
-    }
+        gameUI.PrintText("Player %d has ended their turn.\n", player, player);
+        movedAdjacent = false;
+        moveCount = 0;
+        playerTurn = 3 - player;
 
+    }
 
 
     public void movePiece() {
-        if(hasJumped())
+        if (hasJumped())
             validator.jumped = true;
         tiles[secondX][secondY].color = tiles[firstX][firstY].color;
         tiles[firstX][firstY].color = 0;
-        //gameUI.GetSquares()[secondX][secondY].setIcon(firstSelectionIcon);
-        //gameUI.GetSquares()[firstX][firstY].setIcon(empty);
+        changeTurn(playerTurn);
         gameUI.UpdateGUI(tiles);
     }
 
-    private boolean hasJumped(){
+    private boolean hasJumped() {
         return Math.abs(firstX - secondX) > 1 || Math.abs(firstY - secondY) > 1;
     }
 
 
-    private boolean CheckTerminal()
-    {
+    private boolean CheckTerminal() {
 
         int redCounter = 0;
         int blueCounter = 0;
@@ -215,14 +202,13 @@ public class Halma {
                 if (tiles[x][y].zone == 1) {
                     if (tiles[x][y].color == 2) {
                         redCounter++;
-                        if(redCounter >= 10)
+                        if (redCounter >= 10)
                             return true;
                     }
-                }
-                else if (tiles[x][y].zone == 2) {
+                } else if (tiles[x][y].zone == 2) {
                     if (tiles[x][y].color == 1) {
                         blueCounter++;
-                        if(blueCounter >= 10)
+                        if (blueCounter >= 10)
                             return true;
                     }
                 }
@@ -230,13 +216,14 @@ public class Halma {
         }
         return false;
     }
+
     private boolean CheckTerminal(int color) {
 
         int inOpponentCampCounter = 0;
 
         for (int x = 0; x < 8; x++) {
             for (int y = 0; y < 8; y++) {
-                if (tiles[x][y].zone == (3-color)) {
+                if (tiles[x][y].zone == (3 - color)) {
                     if (tiles[x][y].color == color) {
                         inOpponentCampCounter++;
                         if (inOpponentCampCounter >= 10)

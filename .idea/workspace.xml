@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8403c0f4-1e3b-4bc6-973a-7c3cc420c575" name="Changes" comment="Remove unused code and seperate UI code.">
+    <list default="true" id="8403c0f4-1e3b-4bc6-973a-7c3cc420c575" name="Changes" comment="Gui can show possible moves with gree color.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/GUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/GUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Halma.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Halma.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -159,7 +159,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667413703200</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Gui can show possible moves with gree color.">
+      <created>1667420928556</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1667420928556</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -180,6 +187,7 @@
     <MESSAGE value="Init" />
     <MESSAGE value="Logger bug is fixed." />
     <MESSAGE value="Remove unused code and seperate UI code." />
-    <option name="LAST_COMMIT_MESSAGE" value="Remove unused code and seperate UI code." />
+    <MESSAGE value="Gui can show possible moves with gree color." />
+    <option name="LAST_COMMIT_MESSAGE" value="Gui can show possible moves with gree color." />
   </component>
 </project>
