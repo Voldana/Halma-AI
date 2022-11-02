@@ -3,6 +3,7 @@ package com.company;
 import java.awt.*;
 import java.util.*;
 import java.awt.event.*;
+import java.util.List;
 import javax.swing.*;
 
 public class Halma {
@@ -22,6 +23,7 @@ public class Halma {
     private int clickCount = 1;
     private String firstSelectionStr;
 
+    private Validator validator;
     private JButton jbEndTurn;
     private int playerTurn;
     private int moveCount = 0;
@@ -31,6 +33,7 @@ public class Halma {
     // Total moves in current game
     private int grandTotalMoves = 0;
 
+    private Tile[][] tiles;
 
     private boolean movedAdjacent = false;
 
@@ -38,10 +41,29 @@ public class Halma {
     Board gameboard = new Board();
 
     public Halma() {
+        tiles = new Tile[8][8];
+        assignCoordinates();
+    }
 
+    private void assignCoordinates() {
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                tiles[i][j] = new Tile(i,j);
+
+                if((i+j) <= 3){
+                    tiles[i][j].color = 1;
+                    tiles[i][j].zone = 1;
+                }
+                else if((i+j) >= 11){
+                    tiles[i][j].color = 2;
+                    tiles[i][j].zone = 2;
+                }
+            }
+        }
     }
 
     public void RunGame() {
+        validator = new Validator(tiles);
         // displays everything in HalmaBoard()
         Board jk = new Board();
         jk.CreateBoard();
@@ -128,7 +150,8 @@ public class Halma {
                             secondY = Integer.parseInt(arr[1]);
 
                             // validation - if validates do movePiece
-                            if (validateMove()) {
+                            if (isMoveLegal()) {
+                                validator.movedOnce = true;
                                 movePiece();
                                 prevSecondX = secondX;
                                 prevSecondY = secondY;
@@ -144,6 +167,14 @@ public class Halma {
                 }); // end of actionListener
             }
         }
+    }
+
+    private boolean isMoveLegal(){
+        List<Tile> legalMoves = validator.findPossibleMoves(firstX,firstY);
+        Tile targetTile = tiles[secondX][secondY];
+        if(legalMoves.contains(targetTile))
+            return true;
+        return false;
     }
 
     public boolean validateMove() {
@@ -199,6 +230,7 @@ public class Halma {
     }
 
     public int changeTurn(int player) {
+        validator.endTurn();
         if (player == 0) {
             gameboard.PrintText("Player 1 has ended their turn.\n");
             player++;
@@ -263,10 +295,17 @@ public class Halma {
 
     // basically it moves the pieces and refreshes layout
     public void movePiece() {
+        if(hasJumped())
+            validator.jumped = true;
+        tiles[secondX][secondY].color = tiles[firstX][firstY].color;
+        tiles[firstX][firstY].color = 0;
         gameboard.GetSquares()[secondX][secondY].setIcon(firstSelectionIcon);
         gameboard.GetSquares()[firstX][firstY].setIcon(empty);
     } // end method movePiece
 
+    private boolean hasJumped(){
+        return Math.abs(firstX - secondX) > 1 || Math.abs(firstY - secondY) > 1;
+    }
     private boolean CheckTerminal()
     {
 
