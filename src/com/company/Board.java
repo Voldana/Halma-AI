@@ -60,6 +60,19 @@ public class Board extends JFrame {
         add(jpNavigationRight, BorderLayout.SOUTH);
     }
 
+    public void SetCampColors() {
+        for (int x = 0; x < 8; x++) {
+            for (int y = 0; y < 8; y++) {
+                if ((x + y) <= 3) {
+                    squares[x][y].setBackground(new Color(199, 236, 255));
+                }
+                if ((x + y) >= 11) {
+                    squares[x][y].setBackground(new Color(255, 199, 199));
+                }
+            }
+        }
+    }
+
 
     public void AddFrame() {
         add(board, BorderLayout.CENTER);
