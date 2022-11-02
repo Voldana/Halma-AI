@@ -3,11 +3,6 @@ package com.company;
 import javax.swing.*;
 import java.awt.*;
 
-import java.awt.*;
-import java.util.*;
-import java.awt.event.*;
-import javax.swing.*;
-
 public class Board extends JFrame {
 
     private JPanel board;
@@ -28,9 +23,13 @@ public class Board extends JFrame {
         return jpNavigationRight;
     }
 
+    private Icon homePiece = new ImageIcon();
+    private Icon awayPiece = new ImageIcon();
+    private Icon empty = new ImageIcon("empty");
+
     public void CreateBoard() {
 
-        // Halma Board Layout - this creates the whole board
+
         board = new JPanel(new GridLayout(8, 8));
         board.setSize(400, 400);
         for (int x = 0; x < squares.length; x++) {
@@ -68,6 +67,25 @@ public class Board extends JFrame {
                 }
                 if ((x + y) >= 11) {
                     squares[x][y].setBackground(new Color(255, 199, 199));
+                }
+            }
+        }
+    }
+
+    public void AddMarbles() {
+        homePiece = new ImageIcon("red.png"); // these are the default icons
+        awayPiece = new ImageIcon("blue.png"); // these are the default icons
+        for (int x = 0; x < 8; x++) {
+            for (int y = 0; y < 8; y++) {
+
+                if ((x + y) <= 3) {
+                    squares[x][y].setIcon(awayPiece);
+                }
+
+                else if ((x + y) >= 11) {
+                    squares[x][y].setIcon(homePiece);
+                } else {
+                    squares[x][y].setIcon(empty);
                 }
             }
         }
