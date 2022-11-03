@@ -16,6 +16,8 @@ public class Validator {
 
 
     public List<Tile> findPossibleMoves(Tile firstTile, List<Tile> possibleMoves,Tile startTile, boolean adjacent){
+        if(possibleMoves == null)
+            possibleMoves = new LinkedList<>();
         int x; int y;
         Tile newTile;
         for(int i = -1; i <=1; i++) {
@@ -48,10 +50,6 @@ public class Validator {
         return possibleMoves;
     }
 
-    public void endTurn(){
-        movedOnce = false;
-        jumped = false;
-    }
     private boolean isCoordinatesInRange(int x,int y){
         return x >= 0 && x <= 7 && y >= 0 && y <= 7;
     }
