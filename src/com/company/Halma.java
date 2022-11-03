@@ -20,7 +20,7 @@ public class Halma {
     private boolean firstClick = true;
     private String firstSelectionStr;
 
-    private final static  int maxDepth = 2;
+    private final static  int maxDepth = 4;
     private Board board;
     private JButton jbEndTurn;
     private int playerTurn = 1;
@@ -108,11 +108,11 @@ public class Halma {
     }
 
     private Move doMinMax(){
-        var possibleMoves = createPossibleMoves(tiles);
+        var possibleMoves = createPossibleMoves(tiles, playerTurn);
         Move bestMove = null;
         int bestMoveValue = Integer.MIN_VALUE;
         for(Move move: possibleMoves){
-            int temp = min(board.doMove(move,tiles),1 );
+            int temp = min(board.doMove(move,tiles), 3-playerTurn, 1 );
             if(temp > bestMoveValue){
                 bestMove = move;
                 bestMoveValue = temp;
@@ -120,21 +120,23 @@ public class Halma {
         }
         if(bestMove == null)
             return possibleMoves.get(new Random().nextInt(possibleMoves.size()));
+
+        gameUI.PrintText("Value:" + bestMoveValue + "\n");
         return bestMove;
     }
 
-    private int min(Tile[][] currentBoard, int depth){
+    private int min(Tile[][] currentBoard, int currentColor, int depth){
         if(depth == maxDepth)
-            return evaluate(currentBoard);
+            return evaluate(currentBoard, currentColor);
 
-        if(CheckTerminal(currentBoard))
+        if(CheckTerminal(currentBoard, currentColor))
             return Integer.MIN_VALUE;
 
-        List<Move> possibleMoves = createPossibleMoves(currentBoard);
+        List<Move> possibleMoves = createPossibleMoves(currentBoard, currentColor);
 
         int bestMoveValue = Integer.MAX_VALUE;
         for (Move move: possibleMoves){
-            int temp = max(board.doMove(move,tiles),depth+1);
+            int temp = max(board.doMove(move,tiles), 3-currentColor, depth+1);
             if(temp < bestMoveValue){
                 bestMoveValue = temp;
             }
@@ -142,18 +144,18 @@ public class Halma {
         return bestMoveValue;
     }
 
-    private int max(Tile[][] currentBoard, int depth){
+    private int max(Tile[][] currentBoard, int currentColor, int depth){
         if(depth == maxDepth)
-            return evaluate(currentBoard);
+            return evaluate(currentBoard, currentColor);
 
-        if(CheckTerminal(currentBoard))
-            return Integer.MIN_VALUE;
+        if(CheckTerminal(currentBoard, currentColor))
+            return Integer.MAX_VALUE;
 
-        List<Move> possibleMoves = createPossibleMoves(currentBoard);
+        List<Move> possibleMoves = createPossibleMoves(currentBoard, currentColor);
 
         int bestMoveValue = Integer.MIN_VALUE;
         for (Move move: possibleMoves){
-            int temp = min(board.doMove(move,tiles),depth+1);
+            int temp = min(board.doMove(move,tiles),3-currentColor,depth+1);
             if(temp > bestMoveValue){
                 bestMoveValue = temp;
             }
@@ -161,15 +163,30 @@ public class Halma {
         return bestMoveValue;
     }
 
-    private int evaluate(Tile[][] board){
-        Random random = new Random();
-        return random.nextInt(-20,20);
+    private int evaluate(Tile[][] currentBoard, int currentColor){
+        int score = 0;
+        for (int i = 0; i < currentBoard.length; i++) {
+            for (int j = 0; j < currentBoard.length; j++) {
+                if(currentBoard[i][j].color == currentColor){
+                    if(currentColor == playerTurn) {
+                        score += (7 - i);
+                        score += (7 - j);
+                    }
+                    else{
+                        score += i;
+                        score += j;
+                    }
+
+                }
+            }
+        }
+        return score;
     }
 
 
     private void doRandomAction(int playerTurn){
 
-        var possibleMoves = createPossibleMoves(tiles);
+        var possibleMoves = createPossibleMoves(tiles, playerTurn);
         var random = new Random().nextInt(possibleMoves.size() - 1);
         firstX = possibleMoves.get(random).startPos.x;
         firstY = possibleMoves.get(random).startPos.y;
@@ -178,11 +195,11 @@ public class Halma {
         movePiece(possibleMoves.get(random));
     }
 
-    private List<Move> createPossibleMoves(Tile[][] newBoard){
+    private List<Move> createPossibleMoves(Tile[][] newBoard, int currentColor){
         List<Move> possibleMoves = new LinkedList<>();
         for(int i = 0; i < 8; i++)
             for(int j = 0; j < 8; j++)
-                if(tiles[i][j].color == playerTurn){
+                if(tiles[i][j].color == currentColor){
                     firstX = i; firstY = j;
                     List<Tile> legalTiles = new LinkedList<>();
                     board.findPossibleMoves(newBoard,newBoard[firstX][firstY],legalTiles,newBoard[firstX][firstY],true);
@@ -325,14 +342,14 @@ public class Halma {
         return false;
     }
 
-    private boolean CheckTerminal(int color) {
+    private boolean CheckTerminal(Tile[][] currentTiles, int color) {
 
         int inOpponentCampCounter = 0;
 
         for (int x = 0; x < 8; x++) {
             for (int y = 0; y < 8; y++) {
-                if (tiles[x][y].zone == (3 - color)) {
-                    if (tiles[x][y].color == color) {
+                if (currentTiles[x][y].zone == (3 - color)) {
+                    if (currentTiles[x][y].color == color) {
                         inOpponentCampCounter++;
                         if (inOpponentCampCounter >= 10)
                             return true;
