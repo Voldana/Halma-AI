@@ -1,7 +1,10 @@
 package com.company;
 
 import java.awt.event.*;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
+import java.util.concurrent.TimeUnit;
 import javax.swing.*;
 
 public class Halma {
@@ -17,7 +20,8 @@ public class Halma {
     private boolean firstClick = true;
     private String firstSelectionStr;
 
-    private Validator validator;
+    private final static  int maxDepth = 2;
+    private Board board;
     private JButton jbEndTurn;
     private int playerTurn = 1;
     private int moveCount = 0;
@@ -55,8 +59,8 @@ public class Halma {
         }
     }
 
-    public void RunGame() {
-        validator = new Validator(tiles);
+    public void RunGame(){
+        board = new Board(tiles);
 
         GUI jk = new GUI();
         jk.CreateBoard();
@@ -74,14 +78,92 @@ public class Halma {
         jk.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // closes frame
         jk.setLocationRelativeTo(null);
         jk.setVisible(true); // makes HalmaBoard visible
+        startGame();
     }
 
-    public void setUpGame() {
+    public void setUpGame(){
 
         gameUI.SetCampColors();
         gameUI.AddMarbles();
-        givePieceMoves();
+//        givePieceMoves();
         gameUI.AddFrame();
+    }
+
+    private void startGame(){
+/*        if(playerTurn == 1)
+            doRandomAction(playerTurn);
+        else
+            doMinMax();*/
+        doRandomAction(playerTurn);
+        try {
+            TimeUnit.MILLISECONDS.sleep(10);
+        }
+        catch (Exception e){
+
+        }
+        startGame();
+    }
+
+    private Move doMinMax(){
+        var possibleMoves = createPossibleMoves(tiles);
+        Move bestMove = null;
+        int bestMoveValue = Integer.MIN_VALUE;
+        for(Move move: possibleMoves){
+            int temp = min(board.doMove(move,tiles),1 );
+            if(temp > bestMoveValue){
+                bestMove = move;
+                bestMoveValue = temp;
+            }
+            //board.undoMove
+        }
+        if(bestMove == null)
+            return possibleMoves.get(new Random().nextInt(possibleMoves.size()));
+        return bestMove;
+    }
+
+    private int min(Tile[][] board, int depth){
+        if(depth == maxDepth)
+            return evaluate(board);
+        List<Move> possibleMoves = createPossibleMoves(board);
+        int bestValue = Integer.MAX_VALUE;
+        for (Move move: possibleMoves){
+
+        }
+        return 1;
+    }
+
+    private int max(Tile[][] board, int depth){
+        return 1;
+    }
+
+    private int evaluate(Tile[][] board){
+        return 0;
+    }
+
+
+    private void doRandomAction(int playerTurn){
+
+        var possibleMoves = createPossibleMoves(tiles);
+        var random = new Random().nextInt(possibleMoves.size() - 1);
+        firstX = possibleMoves.get(random).startPos.x;
+        firstY = possibleMoves.get(random).startPos.y;
+        secondX = possibleMoves.get(random).finalPos.x;
+        secondY = possibleMoves.get(random).finalPos.y;
+        movePiece(possibleMoves.get(random));
+    }
+
+    private List<Move> createPossibleMoves(Tile[][] newBoard){
+        List<Move> possibleMoves = new LinkedList<>();
+        for(int i = 0; i < 8; i++)
+            for(int j = 0; j < 8; j++)
+                if(tiles[i][j].color == playerTurn){
+                    firstX = i; firstY = j;
+                    List<Tile> legalTiles = new LinkedList<>();
+                    board.findPossibleMoves(newBoard,newBoard[firstX][firstY],legalTiles,newBoard[firstX][firstY],true);
+                    for (Tile tile: legalTiles)
+                        possibleMoves.add(new Move(newBoard[i][j],tile));
+                }
+        return possibleMoves;
     }
 
     public void turnButton() {
@@ -130,7 +212,8 @@ public class Halma {
 
                             if (tiles[firstX][firstY].color == (playerTurn)) {
                                 gameUI.PrintText("You have selected %s at %d, %d\n", firstSelectionStr, firstSelectionLen, firstX, firstY);
-                                gameUI.ShowPossibleMoves(validator.findPossibleMoves(firstX, firstY));
+                                Tile chosenTile = tiles[firstX][firstY];
+                                gameUI.ShowPossibleMoves(board.findPossibleMoves(tiles,chosenTile,null,chosenTile,true));
                                 firstClick = false;
                             } else {
                                 gameUI.PrintText("You have selected an empty spot.\n");
@@ -144,8 +227,7 @@ public class Halma {
                             secondY = Integer.parseInt(arr[1]);
 
                             if (isMoveLegal()) {
-                                validator.movedOnce = true;
-                                movePiece();
+                                movePiece(new Move(tiles[firstX][firstY] , tiles[secondX][secondY]));
                                 prevFirstX = firstX;
                                 prevFirstY = firstY;
                                 moveCount++;
@@ -160,16 +242,19 @@ public class Halma {
         }
     }
 
-    private boolean isMoveLegal() {
-        List<Tile> legalMoves = validator.findPossibleMoves(firstX, firstY);
+    private boolean isMoveLegal(){
+        List<Tile> legalTiles = new LinkedList<>();
+        board.findPossibleMoves(tiles,tiles[firstX][firstY],legalTiles,tiles[firstX][firstY],true);
         Tile targetTile = tiles[secondX][secondY];
-        if (legalMoves.contains(targetTile))
+/*        for(Move move: legalMoves)
+            if(move.finalPos == targetTile)
+                return true;*/
+        if(legalTiles.contains(targetTile))
             return true;
         return false;
     }
 
     public void changeTurn(int player) {
-        validator.endTurn();
         gameUI.PrintText("Player %d has ended their turn.\n", player, player);
         movedAdjacent = false;
         moveCount = 0;
@@ -178,19 +263,16 @@ public class Halma {
     }
 
 
-    public void movePiece() {
-        if (hasJumped())
-            validator.jumped = true;
+    public void movePiece(Move move) {
+        firstX = move.startPos.x;
+        firstY = move.startPos.y;
+        secondX = move.finalPos.x;
+        secondY = move.finalPos.y;
         tiles[secondX][secondY].color = tiles[firstX][firstY].color;
         tiles[firstX][firstY].color = 0;
         changeTurn(playerTurn);
         gameUI.UpdateGUI(tiles);
     }
-
-    private boolean hasJumped() {
-        return Math.abs(firstX - secondX) > 1 || Math.abs(firstY - secondY) > 1;
-    }
-
 
     private boolean CheckTerminal() {
 
