@@ -90,11 +90,14 @@ public class Halma {
     }
 
     private void startGame(){
-/*        if(playerTurn == 1)
+        if(playerTurn == 1)
             doRandomAction(playerTurn);
-        else
-            doMinMax();*/
-        doRandomAction(playerTurn);
+        else{
+            movePiece(doMinMax());
+        }
+
+        //doRandomAction(playerTurn);
+
         try {
             TimeUnit.MILLISECONDS.sleep(10);
         }
@@ -114,30 +117,53 @@ public class Halma {
                 bestMove = move;
                 bestMoveValue = temp;
             }
-            //board.undoMove
         }
         if(bestMove == null)
             return possibleMoves.get(new Random().nextInt(possibleMoves.size()));
         return bestMove;
     }
 
-    private int min(Tile[][] board, int depth){
+    private int min(Tile[][] currentBoard, int depth){
         if(depth == maxDepth)
-            return evaluate(board);
-        List<Move> possibleMoves = createPossibleMoves(board);
-        int bestValue = Integer.MAX_VALUE;
-        for (Move move: possibleMoves){
+            return evaluate(currentBoard);
 
+        if(CheckTerminal(currentBoard))
+            return Integer.MIN_VALUE;
+
+        List<Move> possibleMoves = createPossibleMoves(currentBoard);
+
+        int bestMoveValue = Integer.MAX_VALUE;
+        for (Move move: possibleMoves){
+            int temp = max(board.doMove(move,tiles),depth+1);
+            if(temp < bestMoveValue){
+                bestMoveValue = temp;
+            }
         }
-        return 1;
+        return bestMoveValue;
     }
 
-    private int max(Tile[][] board, int depth){
-        return 1;
+    private int max(Tile[][] currentBoard, int depth){
+        if(depth == maxDepth)
+            return evaluate(currentBoard);
+
+        if(CheckTerminal(currentBoard))
+            return Integer.MIN_VALUE;
+
+        List<Move> possibleMoves = createPossibleMoves(currentBoard);
+
+        int bestMoveValue = Integer.MIN_VALUE;
+        for (Move move: possibleMoves){
+            int temp = min(board.doMove(move,tiles),depth+1);
+            if(temp > bestMoveValue){
+                bestMoveValue = temp;
+            }
+        }
+        return bestMoveValue;
     }
 
     private int evaluate(Tile[][] board){
-        return 0;
+        Random random = new Random();
+        return random.nextInt(-20,20);
     }
 
 
@@ -274,21 +300,21 @@ public class Halma {
         gameUI.UpdateGUI(tiles);
     }
 
-    private boolean CheckTerminal() {
+    private boolean CheckTerminal(Tile[][] currentTiles) {
 
         int redCounter = 0;
         int blueCounter = 0;
 
         for (int x = 0; x < 8; x++) {
             for (int y = 0; y < 8; y++) {
-                if (tiles[x][y].zone == 1) {
-                    if (tiles[x][y].color == 2) {
+                if (currentTiles[x][y].zone == 1) {
+                    if (currentTiles[x][y].color == 2) {
                         redCounter++;
                         if (redCounter >= 10)
                             return true;
                     }
-                } else if (tiles[x][y].zone == 2) {
-                    if (tiles[x][y].color == 1) {
+                } else if (currentTiles[x][y].zone == 2) {
+                    if (currentTiles[x][y].color == 1) {
                         blueCounter++;
                         if (blueCounter >= 10)
                             return true;
