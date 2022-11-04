@@ -15,7 +15,7 @@ public class GUI extends JFrame {
     private Icon awayPiece = new ImageIcon();
     private final Icon empty = new ImageIcon("empty");
 
-    public void CreateBoard() {
+    public void createBoard() {
 
         board = new JPanel(new GridLayout(8, 8));
         board.setSize(400, 400);
@@ -32,7 +32,7 @@ public class GUI extends JFrame {
 
     }
 
-    public void CreateTextBoxArea() {
+    public void createTextBoxArea() {
         JPanel jpText = new JPanel(new GridLayout(0, 1));
         jPrintArea = new JTextArea(5, 10);
         jPrintArea.requestFocusInWindow();
@@ -43,7 +43,7 @@ public class GUI extends JFrame {
         add(jpNavigationRight, BorderLayout.SOUTH);
     }
 
-    public void SetCampColors() {
+    public void setCampColors() {
         for (int x = 0; x < 8; x++) {
             for (int y = 0; y < 8; y++) {
                 squares[x][y].setBackground(new Color(255, 255, 255));
@@ -57,7 +57,7 @@ public class GUI extends JFrame {
         }
     }
 
-    public void AddMarbles() {
+    public void addMarbles() {
         homePiece = new ImageIcon("red.png"); // these are the default icons
         awayPiece = new ImageIcon("blue.png"); // these are the default icons
         for (int x = 0; x < 8; x++) {
@@ -74,7 +74,7 @@ public class GUI extends JFrame {
         }
     }
 
-    public void UpdateGUI(Tile[][] tiles) {
+    public void updateGUI(Tile[][] tiles) {
         for (int x = 0; x < 8; x++) {
             for (int y = 0; y < 8; y++) {
                 if(tiles[x][y].color == 1){
@@ -90,24 +90,17 @@ public class GUI extends JFrame {
         }
     }
 
-    public void AddFrame() {
+    public void addFrame() {
         add(board, BorderLayout.CENTER);
     }
 
-    public void PrintText(String text) {
+    public void printText(String text) {
         jPrintArea.append(text);
     }
 
-    public void PrintText(String text, int x, int y) {
+    public void printText(String text, int x, int y) {
         jPrintArea.append(String.format(text, x, y));
     }
 
-    public void PrintText(String text, String select, int length, int x, int y) {
-        jPrintArea.append(String.format(text, select.substring(0, length - 4), x, y));
-    }
-
-    public void ClearTextBox() {
-        jPrintArea.setText(null);
-    }
 
 }
