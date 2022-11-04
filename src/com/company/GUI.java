@@ -2,27 +2,18 @@ package com.company;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.List;
 
 public class GUI extends JFrame {
 
     private JPanel board;
-    private JButton[][] squares = new JButton[8][8];
+    private final JButton[][] squares = new JButton[8][8];
 
     private JTextArea jPrintArea;
     JPanel jpNavigationRight = new JPanel(new GridLayout(0, 1));
 
-    public JButton[][] GetSquares() {
-        return squares;
-    }
-
-    public JPanel GetJpanel() {
-        return jpNavigationRight;
-    }
-
     private Icon homePiece = new ImageIcon();
     private Icon awayPiece = new ImageIcon();
-    private Icon empty = new ImageIcon("empty");
+    private final Icon empty = new ImageIcon("empty");
 
     public void CreateBoard() {
 
@@ -30,17 +21,14 @@ public class GUI extends JFrame {
         board.setSize(400, 400);
         for (int x = 0; x < squares.length; x++) {
             for (int y = 0; y < squares[x].length; y++) {
-                // creates the button
                 squares[x][y] = new JButton(x + "," + y);
                 squares[x][y].setPreferredSize(new Dimension(50, 50));
-                // makes the color by default black
                 squares[x][y].setForeground(Color.BLACK);
                 squares[x][y].setOpaque(true);
-                // adds the buttons
+
                 board.add(squares[x][y]);
             }
         }
-
 
     }
 
@@ -99,12 +87,6 @@ public class GUI extends JFrame {
                     squares[x][y].setIcon(empty);
                 }
             }
-        }
-    }
-
-    public void ShowPossibleMoves(List<Tile> possibleTiles){
-        for(Tile tile : possibleTiles){
-            squares[tile.x][tile.y].setBackground(Color.green);
         }
     }
 

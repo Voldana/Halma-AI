@@ -5,22 +5,15 @@ import java.util.List;
 
 public class Board {
 
-    private Tile[][] tiles;
-    private List<Move> possibleMoves;
-    public Board(Tile[][] tiles) {
-        this.tiles = tiles;
-    }
-
-
     public List<Tile> findPossibleMoves(Tile[][] tiles,Tile firstTile, List<Tile> possibleMoves,Tile startTile, boolean adjacent){
         if(possibleMoves == null)
             possibleMoves = new LinkedList<>();
-        int x; int y;
+        byte x; byte y;
         Tile newTile;
-        for(int i = -1; i <=1; i++) {
-            for (int j = -1; j <= 1; j++) {
-                x = startTile.x + i;
-                y = startTile.y + j;
+        for(byte i = -1; i <=1; i++) {
+            for (byte j = -1; j <= 1; j++) {
+                x = (byte) (startTile.x + i);
+                y = (byte) (startTile.y + j);
                 if(!isCoordinatesInRange(x,y))
                     continue;
                 newTile = tiles[x][y];
@@ -58,8 +51,8 @@ public class Board {
 
     private Tile[][] cloneBoard(Tile[][] board){
         Tile[][] clone = new Tile[8][8];
-        for(int i = 0; i < 8 ; i++)
-            for(int j = 0; j < 8; j++){
+        for(byte i = 0; i < 8 ; i++)
+            for(byte j = 0; j < 8; j++){
                 clone[i][j] = new Tile(i, j);
                 clone[i][j].x = i;
                 clone[i][j].y = j;
