@@ -87,6 +87,9 @@ public class Halma {
     }
 
     private void startGame() {
+        if(CheckTerminal(tiles))
+            return;
+        
         if (playerTurn == 1)
             doRandomAction(playerTurn);
         else {
@@ -326,14 +329,18 @@ public class Halma {
                 if (currentTiles[x][y].zone == 1) {
                     if (currentTiles[x][y].color == 2) {
                         redCounter++;
-                        if (redCounter >= 10)
+                        if (redCounter >= 10){
+                            gameUI.PrintText("Player 2 has won");
                             return true;
+                        }
                     }
                 } else if (currentTiles[x][y].zone == 2) {
                     if (currentTiles[x][y].color == 1) {
                         blueCounter++;
-                        if (blueCounter >= 10)
+                        if (blueCounter >= 10){
+                            gameUI.PrintText("Player 1 has won");
                             return true;
+                        }
                     }
                 }
             }
