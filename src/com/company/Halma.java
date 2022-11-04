@@ -75,61 +75,32 @@ public class Halma {
         if (CheckTerminal(currentBoard))
             return new Pair(null, Integer.MIN_VALUE);
 
-        if (depth == maxDepth)
-            return new Pair(null, evaluate(currentBoard, currentColor));
+       // check depth here
 
         List<Move> possibleMoves = createPossibleMoves(currentBoard, currentColor);
-        Move bestMove = null;
-        int bestMoveValue = Integer.MIN_VALUE;
-        for (Move move : possibleMoves) {
-            Pair temp = min(board.doMove(move, currentBoard), (byte) (3 - currentColor), (byte) (depth + 1));
-            if (temp.value > bestMoveValue) {
-                bestMoveValue = temp.value;
-                bestMove = move;
-            }
-        }
 
-        return new Pair(bestMove, bestMoveValue);
+        // write your codes here
+
+        // return pair(move, value)
+        return new Pair(null, 0);
     }
 
     private Pair min(Tile[][] currentBoard, byte currentColor, byte depth) {
 
-        if (CheckTerminal(currentBoard))
-            return new Pair(null, Integer.MAX_VALUE);
+        // write your codes here
 
-        if (depth == maxDepth)
-            return new Pair(null, evaluate(currentBoard, currentColor));
-
-        List<Move> possibleMoves = createPossibleMoves(currentBoard, currentColor);
-        Move bestMove = null;
-
-        int bestMoveValue = Integer.MAX_VALUE;
-        for (Move move : possibleMoves) {
-            Pair temp = max(board.doMove(move, currentBoard), (byte) (3 - currentColor), (byte) (depth + 1));
-            if (temp.value < bestMoveValue) {
-                bestMoveValue = temp.value;
-                bestMove = move;
-            }
-        }
-        return new Pair(bestMove, bestMoveValue);
+        // return pair(move, value)
+        return new Pair(null, 0);
     }
 
     private int evaluate(Tile[][] currentBoard, byte currentColor) {
         short score = 0;
-        for (byte i = 0; i < currentBoard.length; i++) {
-            for (byte j = 0; j < currentBoard.length; j++) {
-                if (currentBoard[i][j].color == playerTurn) {
-                    score += (7 - i);
-                    score += (7 - j);
-                } else if (currentBoard[i][j].color == (3 - playerTurn)) {
 
-                    score -= i;
-                    score -= j;
+        // write your codes here
+        // use the given parameter "currentColor" or "playerTurn" if needed
 
-                }
-            }
-        }
         return score;
+
     }
 
     private void doRandomAction(int playerTurn) {

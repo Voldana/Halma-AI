@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8403c0f4-1e3b-4bc6-973a-7c3cc420c575" name="Changes" comment="Minmax bug is probably fixed by giving the current board as parameter instead of tiles">
+    <list default="true" id="8403c0f4-1e3b-4bc6-973a-7c3cc420c575" name="Changes" comment="Codes are polished by removing player codes, unused codes, changing variable types and useless comments">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled104/com/company/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled104/com/company/Board.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled104/com/company/Halma.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled104/com/company/Halma.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled104/com/company/Tile.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled104/com/company/Tile.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/GUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Halma.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Halma.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Tile.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,7 +20,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="8-minimax" />
+        <entry key="$PROJECT_DIR$" value="10-ai-vs-random" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -200,7 +194,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667551578177</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Codes are polished by removing player codes, unused codes, changing variable types and useless comments">
+      <created>1667555419312</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1667555419312</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -226,6 +227,7 @@
     <MESSAGE value="Algorithm is working now but still have a problem with different depths" />
     <MESSAGE value="A class was created for move and value called Pair" />
     <MESSAGE value="Minmax bug is probably fixed by giving the current board as parameter instead of tiles" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minmax bug is probably fixed by giving the current board as parameter instead of tiles" />
+    <MESSAGE value="Codes are polished by removing player codes, unused codes, changing variable types and useless comments" />
+    <option name="LAST_COMMIT_MESSAGE" value="Codes are polished by removing player codes, unused codes, changing variable types and useless comments" />
   </component>
 </project>
