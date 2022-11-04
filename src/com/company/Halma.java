@@ -20,7 +20,7 @@ public class Halma {
     private boolean firstClick = true;
     private String firstSelectionStr;
 
-    private final static int maxDepth = 1;
+    private final static int maxDepth = 3;
     private Board board;
     private JButton jbEndTurn;
     private int playerTurn = 1;
@@ -111,10 +111,10 @@ public class Halma {
         Move bestMove = null;
         int bestMoveValue = Integer.MIN_VALUE;
         for (Move move : possibleMoves) {
-            int temp = min(board.doMove(move, tiles), 3 - playerTurn, 1);
-            if (temp > bestMoveValue) {
+            Pair temp = min(board.doMove(move, tiles), 3 - playerTurn, 1);
+            if (temp.value > bestMoveValue) {
                 bestMove = move;
-                bestMoveValue = temp;
+                bestMoveValue = temp.value;
             }
         }
         if (bestMove == null)
@@ -124,44 +124,48 @@ public class Halma {
         return bestMove;
     }
 
-    private int min(Tile[][] currentBoard, int currentColor, int depth) {
+    private Pair min(Tile[][] currentBoard, int currentColor, int depth) {
 
         if (CheckTerminal(currentBoard))
-            return Integer.MAX_VALUE;
+            return new Pair(null, Integer.MAX_VALUE);
 
         if (depth == maxDepth)
-            return evaluate(currentBoard, currentColor);
+            return new Pair(null, evaluate(currentBoard, currentColor));
 
         List<Move> possibleMoves = createPossibleMoves(currentBoard, currentColor);
+        Move bestMove = null;
 
         int bestMoveValue = Integer.MAX_VALUE;
         for (Move move : possibleMoves) {
-            int temp = max(board.doMove(move, tiles), 3 - currentColor, depth + 1);
-            if (temp < bestMoveValue) {
-                bestMoveValue = temp;
+            Pair temp = max(board.doMove(move, tiles), 3 - currentColor, depth + 1);
+            if (temp.value < bestMoveValue) {
+                bestMoveValue = temp.value;
+                bestMove = move;
             }
         }
-        return bestMoveValue;
+        return new Pair(bestMove,bestMoveValue);
     }
 
-    private int max(Tile[][] currentBoard, int currentColor, int depth) {
+    private Pair max(Tile[][] currentBoard, int currentColor, int depth) {
 
         if (CheckTerminal(currentBoard))
-            return Integer.MIN_VALUE;
+            return new Pair(null, Integer.MIN_VALUE);
 
         if (depth == maxDepth)
-            return evaluate(currentBoard, currentColor);
+            return new Pair(null, evaluate(currentBoard, currentColor));
 
         List<Move> possibleMoves = createPossibleMoves(currentBoard, currentColor);
-
+        Move bestMove = null;
         int bestMoveValue = Integer.MIN_VALUE;
         for (Move move : possibleMoves) {
-            int temp = min(board.doMove(move, tiles), 3 - currentColor, depth + 1);
-            if (temp > bestMoveValue) {
-                bestMoveValue = temp;
+            Pair temp = min(board.doMove(move, tiles), 3 - currentColor, depth + 1);
+            if (temp.value > bestMoveValue) {
+                bestMoveValue = temp.value;
+                bestMove = move;
             }
         }
-        return bestMoveValue;
+
+        return new Pair(bestMove,bestMoveValue);
     }
 
     private int evaluate(Tile[][] currentBoard, int currentColor) {

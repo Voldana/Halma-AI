@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8403c0f4-1e3b-4bc6-973a-7c3cc420c575" name="Changes" comment="Trying to fix the bug in the algorithm by considering player turn.">
+    <list default="true" id="8403c0f4-1e3b-4bc6-973a-7c3cc420c575" name="Changes" comment="Algorithm is working now but still have a problem with different depths">
+      <change afterPath="$PROJECT_DIR$/src/com/company/Pair.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled104/com/company/Board.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled104/com/company/GUI.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled104/com/company/Halma$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled104/com/company/Halma$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled104/com/company/Halma.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled104/com/company/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled104/com/company/Move.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled104/com/company/Tile.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled104/com/company/Halma$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled104/com/company/Halma$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled104/com/company/Halma$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled104/com/company/Halma$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled104/com/company/Halma.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled104/com/company/Halma.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Halma.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Halma.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -143,7 +139,8 @@
       <option name="presentableId" value="Default" />
       <updated>1667394102704</updated>
       <workItem from="1667394105375" duration="5422000" />
-      <workItem from="1667495254146" duration="6108000" />
+      <workItem from="1667495254146" duration="6449000" />
+      <workItem from="1667544574990" duration="3830000" />
     </task>
     <task id="LOCAL-00001" summary="Init">
       <created>1667394328471</created>
@@ -180,7 +177,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667496714953</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Algorithm is working now but still have a problem with different depths">
+      <created>1667501693683</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1667501693683</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -203,22 +207,7 @@
     <MESSAGE value="Remove unused code and seperate UI code." />
     <MESSAGE value="Gui can show possible moves with gree color." />
     <MESSAGE value="Trying to fix the bug in the algorithm by considering player turn." />
-    <option name="LAST_COMMIT_MESSAGE" value="Trying to fix the bug in the algorithm by considering player turn." />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/company/Halma.java</url>
-          <line>146</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/company/Halma.java</url>
-          <line>126</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Algorithm is working now but still have a problem with different depths" />
+    <option name="LAST_COMMIT_MESSAGE" value="Algorithm is working now but still have a problem with different depths" />
   </component>
 </project>
