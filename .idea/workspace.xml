@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8403c0f4-1e3b-4bc6-973a-7c3cc420c575" name="Changes" comment="Minmax bug is probably fixed by giving the current board as parameter instead of tiles">
+    <list default="true" id="8403c0f4-1e3b-4bc6-973a-7c3cc420c575" name="Changes" comment="All unused codes and AI codes are removed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled104/com/company/Halma$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled104/com/company/Halma$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled104/com/company/Halma$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled104/com/company/Halma$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled104/com/company/Halma$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled104/com/company/Halma$2.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/untitled104/com/company/Halma.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled104/com/company/Halma.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Halma.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Halma.java" afterDir="false" />
     </list>
@@ -23,7 +23,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="8-minimax" />
+        <entry key="$PROJECT_DIR$" value="9-debugging-minimax-algorithm" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -139,7 +139,7 @@
       <updated>1667394102704</updated>
       <workItem from="1667394105375" duration="5422000" />
       <workItem from="1667495254146" duration="6449000" />
-      <workItem from="1667544574990" duration="5535000" />
+      <workItem from="1667544574990" duration="6756000" />
     </task>
     <task id="LOCAL-00001" summary="Init">
       <created>1667394328471</created>
@@ -197,7 +197,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667551578177</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Some unused codes">
+      <created>1667552431892</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1667552431892</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -223,6 +230,8 @@
     <MESSAGE value="Algorithm is working now but still have a problem with different depths" />
     <MESSAGE value="A class was created for move and value called Pair" />
     <MESSAGE value="Minmax bug is probably fixed by giving the current board as parameter instead of tiles" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minmax bug is probably fixed by giving the current board as parameter instead of tiles" />
+    <MESSAGE value="Some unused codes" />
+    <MESSAGE value="All unused codes and AI codes are removed" />
+    <option name="LAST_COMMIT_MESSAGE" value="All unused codes and AI codes are removed" />
   </component>
 </project>
