@@ -87,9 +87,9 @@ public class Halma {
     }
 
     private void startGame() {
-        if(CheckTerminal(tiles))
+        if (CheckTerminal(tiles))
             return;
-        
+
         if (playerTurn == 1)
             doRandomAction(playerTurn);
         else {
@@ -107,21 +107,35 @@ public class Halma {
     }
 
     private Move doMinMax() {
-        var possibleMoves = createPossibleMoves(tiles, playerTurn);
+        Pair temp = max(tiles, playerTurn, 0);
+        /*
+            if (bestMove == null)
+                return possibleMoves.get(new Random().nextInt(possibleMoves.size()));
+        */
+        gameUI.PrintText("\n+ Value: " + temp.value + "\n");
+        return temp.move;
+    }
+
+    private Pair max(Tile[][] currentBoard, int currentColor, int depth) {
+
+        if (CheckTerminal(currentBoard))
+            return new Pair(null, Integer.MIN_VALUE);
+
+        if (depth == maxDepth)
+            return new Pair(null, evaluate(currentBoard, currentColor));
+
+        List<Move> possibleMoves = createPossibleMoves(currentBoard, currentColor);
         Move bestMove = null;
         int bestMoveValue = Integer.MIN_VALUE;
         for (Move move : possibleMoves) {
-            Pair temp = min(board.doMove(move, tiles), 3 - playerTurn, 1);
+            Pair temp = min(board.doMove(move, currentBoard), 3 - currentColor, depth + 1);
             if (temp.value > bestMoveValue) {
-                bestMove = move;
                 bestMoveValue = temp.value;
+                bestMove = move;
             }
         }
-        if (bestMove == null)
-            return possibleMoves.get(new Random().nextInt(possibleMoves.size()));
 
-        gameUI.PrintText("Value: " + bestMoveValue + "\n");
-        return bestMove;
+        return new Pair(bestMove, bestMoveValue);
     }
 
     private Pair min(Tile[][] currentBoard, int currentColor, int depth) {
@@ -137,36 +151,15 @@ public class Halma {
 
         int bestMoveValue = Integer.MAX_VALUE;
         for (Move move : possibleMoves) {
-            Pair temp = max(board.doMove(move, tiles), 3 - currentColor, depth + 1);
+            Pair temp = max(board.doMove(move, currentBoard), 3 - currentColor, depth + 1);
             if (temp.value < bestMoveValue) {
                 bestMoveValue = temp.value;
                 bestMove = move;
             }
         }
-        return new Pair(bestMove,bestMoveValue);
+        return new Pair(bestMove, bestMoveValue);
     }
 
-    private Pair max(Tile[][] currentBoard, int currentColor, int depth) {
-
-        if (CheckTerminal(currentBoard))
-            return new Pair(null, Integer.MIN_VALUE);
-
-        if (depth == maxDepth)
-            return new Pair(null, evaluate(currentBoard, currentColor));
-
-        List<Move> possibleMoves = createPossibleMoves(currentBoard, currentColor);
-        Move bestMove = null;
-        int bestMoveValue = Integer.MIN_VALUE;
-        for (Move move : possibleMoves) {
-            Pair temp = min(board.doMove(move, tiles), 3 - currentColor, depth + 1);
-            if (temp.value > bestMoveValue) {
-                bestMoveValue = temp.value;
-                bestMove = move;
-            }
-        }
-
-        return new Pair(bestMove,bestMoveValue);
-    }
 
     private int evaluate(Tile[][] currentBoard, int currentColor) {
         int score = 0;
@@ -178,7 +171,7 @@ public class Halma {
                     score += (7 - j);
 
 
-                } else if (currentBoard[i][j].color == (3-playerTurn)) {
+                } else if (currentBoard[i][j].color == (3 - playerTurn)) {
 
                     score -= i;
                     score -= j;
@@ -333,7 +326,7 @@ public class Halma {
                 if (currentTiles[x][y].zone == 1) {
                     if (currentTiles[x][y].color == 2) {
                         redCounter++;
-                        if (redCounter >= 10){
+                        if (redCounter >= 10) {
                             gameUI.PrintText("Player 2 has won");
                             return true;
                         }
@@ -341,7 +334,7 @@ public class Halma {
                 } else if (currentTiles[x][y].zone == 2) {
                     if (currentTiles[x][y].color == 1) {
                         blueCounter++;
-                        if (blueCounter >= 10){
+                        if (blueCounter >= 10) {
                             gameUI.PrintText("Player 1 has won");
                             return true;
                         }

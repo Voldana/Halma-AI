@@ -1,0 +1,19 @@
+<changelist name="Uncommitted_changes_before_Checkout_at_11_4_2022_11_59_AM_[Changes]" date="1667550574431" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_4_2022_11_59_AM_[Changes]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Checkout at 11/4/2022 11:59 AM [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/untitled104/com/company/Halma.class" />
+    <option name="AFTER_PATH" value="out/production/untitled104/com/company/Halma.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_4_2022_11_59_AM_[Changes]/Halma.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/untitled104/com/company/Halma$1.class" />
+    <option name="AFTER_PATH" value="out/production/untitled104/com/company/Halma$1.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_4_2022_11_59_AM_[Changes]/Halma$1.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/untitled104/com/company/Halma$2.class" />
+    <option name="AFTER_PATH" value="out/production/untitled104/com/company/Halma$2.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_4_2022_11_59_AM_[Changes]/Halma$2.class" />
+  </binary>
+</changelist>
