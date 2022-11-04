@@ -12,7 +12,6 @@ public class Halma {
 
     private Icon empty = new ImageIcon("empty");
 
-    // Coordinates and Icons for first and second click
     private Icon firstSelectionIcon, secondSelectionIcon;
     private int firstX, firstY, secondX, secondY, prevFirstX, prevFirstY;
 
@@ -25,8 +24,9 @@ public class Halma {
     private JButton jbEndTurn;
     private int playerTurn = 1;
     private int moveCount = 0;
+    private int totalMoves = 0;
 
-    // Total moves in current game
+
     private int grandTotalMoves = 0;
 
     private Tile[][] tiles;
@@ -37,7 +37,6 @@ public class Halma {
         tiles = new Tile[8][8];
         playerTurn = 1;
         assignCoordinates();
-
     }
 
     private void assignCoordinates() {
@@ -108,11 +107,8 @@ public class Halma {
 
     private Move doMinMax() {
         Pair temp = max(tiles, playerTurn, 0);
-        /*
-            if (bestMove == null)
-                return possibleMoves.get(new Random().nextInt(possibleMoves.size()));
-        */
-        gameUI.PrintText("\n+ Value: " + temp.value + "\n");
+        totalMoves++;
+        gameUI.PrintText("\n+ Value: " + temp.value + "    totalMoves: " + totalMoves+ "\n");
         return temp.move;
     }
 
@@ -289,9 +285,7 @@ public class Halma {
         List<Tile> legalTiles = new LinkedList<>();
         board.findPossibleMoves(tiles, tiles[firstX][firstY], legalTiles, tiles[firstX][firstY], true);
         Tile targetTile = tiles[secondX][secondY];
-/*        for(Move move: legalMoves)
-            if(move.finalPos == targetTile)
-                return true;*/
+
         if (legalTiles.contains(targetTile))
             return true;
         return false;
