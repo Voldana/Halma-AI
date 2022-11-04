@@ -12,7 +12,6 @@ public class Halma {
 
     private Icon empty = new ImageIcon("empty");
 
-    // Coordinates and Icons for first and second click
     private Icon firstSelectionIcon, secondSelectionIcon;
     private int firstX, firstY, secondX, secondY, prevFirstX, prevFirstY;
 
@@ -20,13 +19,14 @@ public class Halma {
     private boolean firstClick = true;
     private String firstSelectionStr;
 
-    private final static int maxDepth = 1;
+    private final static int maxDepth = 3;
     private Board board;
     private JButton jbEndTurn;
     private int playerTurn = 1;
     private int moveCount = 0;
+    private int totalMoves = 0;
 
-    // Total moves in current game
+
     private int grandTotalMoves = 0;
 
     private Tile[][] tiles;
@@ -37,7 +37,6 @@ public class Halma {
         tiles = new Tile[8][8];
         playerTurn = 1;
         assignCoordinates();
-
     }
 
     private void assignCoordinates() {
@@ -87,9 +86,9 @@ public class Halma {
     }
 
     private void startGame() {
-        if(CheckTerminal(tiles))
+        if (CheckTerminal(tiles))
             return;
-        
+
         if (playerTurn == 1)
             doRandomAction(playerTurn);
         else {
@@ -107,62 +106,56 @@ public class Halma {
     }
 
     private Move doMinMax() {
-        var possibleMoves = createPossibleMoves(tiles, playerTurn);
+        Pair temp = max(tiles, playerTurn, 0);
+        totalMoves++;
+        gameUI.PrintText("\n+ Value: " + temp.value + "    totalMoves: " + totalMoves+ "\n");
+        return temp.move;
+    }
+
+    private Pair max(Tile[][] currentBoard, int currentColor, int depth) {
+
+        if (CheckTerminal(currentBoard))
+            return new Pair(null, Integer.MIN_VALUE);
+
+        if (depth == maxDepth)
+            return new Pair(null, evaluate(currentBoard, currentColor));
+
+        List<Move> possibleMoves = createPossibleMoves(currentBoard, currentColor);
         Move bestMove = null;
         int bestMoveValue = Integer.MIN_VALUE;
         for (Move move : possibleMoves) {
-            int temp = min(board.doMove(move, tiles), 3 - playerTurn, 1);
-            if (temp > bestMoveValue) {
+            Pair temp = min(board.doMove(move, currentBoard), 3 - currentColor, depth + 1);
+            if (temp.value > bestMoveValue) {
+                bestMoveValue = temp.value;
                 bestMove = move;
-                bestMoveValue = temp;
             }
         }
-        if (bestMove == null)
-            return possibleMoves.get(new Random().nextInt(possibleMoves.size()));
 
-        gameUI.PrintText("Value: " + bestMoveValue + "\n");
-        return bestMove;
+        return new Pair(bestMove, bestMoveValue);
     }
 
-    private int min(Tile[][] currentBoard, int currentColor, int depth) {
+    private Pair min(Tile[][] currentBoard, int currentColor, int depth) {
 
         if (CheckTerminal(currentBoard))
-            return Integer.MAX_VALUE;
+            return new Pair(null, Integer.MAX_VALUE);
 
         if (depth == maxDepth)
-            return evaluate(currentBoard, currentColor);
+            return new Pair(null, evaluate(currentBoard, currentColor));
 
         List<Move> possibleMoves = createPossibleMoves(currentBoard, currentColor);
+        Move bestMove = null;
 
         int bestMoveValue = Integer.MAX_VALUE;
         for (Move move : possibleMoves) {
-            int temp = max(board.doMove(move, tiles), 3 - currentColor, depth + 1);
-            if (temp < bestMoveValue) {
-                bestMoveValue = temp;
+            Pair temp = max(board.doMove(move, currentBoard), 3 - currentColor, depth + 1);
+            if (temp.value < bestMoveValue) {
+                bestMoveValue = temp.value;
+                bestMove = move;
             }
         }
-        return bestMoveValue;
+        return new Pair(bestMove, bestMoveValue);
     }
 
-    private int max(Tile[][] currentBoard, int currentColor, int depth) {
-
-        if (CheckTerminal(currentBoard))
-            return Integer.MIN_VALUE;
-
-        if (depth == maxDepth)
-            return evaluate(currentBoard, currentColor);
-
-        List<Move> possibleMoves = createPossibleMoves(currentBoard, currentColor);
-
-        int bestMoveValue = Integer.MIN_VALUE;
-        for (Move move : possibleMoves) {
-            int temp = min(board.doMove(move, tiles), 3 - currentColor, depth + 1);
-            if (temp > bestMoveValue) {
-                bestMoveValue = temp;
-            }
-        }
-        return bestMoveValue;
-    }
 
     private int evaluate(Tile[][] currentBoard, int currentColor) {
         int score = 0;
@@ -174,7 +167,7 @@ public class Halma {
                     score += (7 - j);
 
 
-                } else if (currentBoard[i][j].color == (3-playerTurn)) {
+                } else if (currentBoard[i][j].color == (3 - playerTurn)) {
 
                     score -= i;
                     score -= j;
@@ -292,9 +285,7 @@ public class Halma {
         List<Tile> legalTiles = new LinkedList<>();
         board.findPossibleMoves(tiles, tiles[firstX][firstY], legalTiles, tiles[firstX][firstY], true);
         Tile targetTile = tiles[secondX][secondY];
-/*        for(Move move: legalMoves)
-            if(move.finalPos == targetTile)
-                return true;*/
+
         if (legalTiles.contains(targetTile))
             return true;
         return false;
@@ -329,7 +320,7 @@ public class Halma {
                 if (currentTiles[x][y].zone == 1) {
                     if (currentTiles[x][y].color == 2) {
                         redCounter++;
-                        if (redCounter >= 10){
+                        if (redCounter >= 10) {
                             gameUI.PrintText("Player 2 has won");
                             return true;
                         }
@@ -337,7 +328,7 @@ public class Halma {
                 } else if (currentTiles[x][y].zone == 2) {
                     if (currentTiles[x][y].color == 1) {
                         blueCounter++;
-                        if (blueCounter >= 10){
+                        if (blueCounter >= 10) {
                             gameUI.PrintText("Player 1 has won");
                             return true;
                         }
