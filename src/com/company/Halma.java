@@ -11,7 +11,7 @@ public class Halma {
     private Board board;
     private final Tile[][] tiles;
 
-    private final static byte maxDepth = 3;
+    private final static byte maxDepth = 4;
     private byte playerTurn;
     private short totalMoves = 0;
     private byte firstX, firstY, secondX, secondY;
@@ -64,17 +64,16 @@ public class Halma {
 
 
     private Move doMinMax() {
-        Pair temp = max(tiles, playerTurn, (byte) (0));
+        Pair temp = max(tiles, playerTurn, (byte) (0), Integer.MIN_VALUE, Integer.MAX_VALUE);
         totalMoves++;
         gameUI.PrintText("\n+ Value: " + temp.value + "    totalMoves: " + totalMoves + "\n");
         return temp.move;
     }
 
-    private Pair max(Tile[][] currentBoard, byte currentColor, byte depth) {
+    private Pair max(Tile[][] currentBoard, byte currentColor, byte depth, int alpha, int beta) {
 
         if (CheckTerminal(currentBoard))
             return new Pair(null, Integer.MIN_VALUE);
-
         if (depth == maxDepth)
             return new Pair(null, evaluate(currentBoard, currentColor));
 
@@ -82,17 +81,21 @@ public class Halma {
         Move bestMove = null;
         int bestMoveValue = Integer.MIN_VALUE;
         for (Move move : possibleMoves) {
-            Pair temp = min(board.doMove(move, currentBoard), (byte) (3 - currentColor), (byte) (depth + 1));
+            Pair temp = min(board.doMove(move, currentBoard), (byte) (3 - currentColor), (byte) (depth + 1), alpha, beta);
             if (temp.value > bestMoveValue) {
                 bestMoveValue = temp.value;
                 bestMove = move;
+                if(alpha < bestMoveValue)
+                    alpha = bestMoveValue;
+                if(beta <= alpha)
+                    break;
             }
         }
 
         return new Pair(bestMove, bestMoveValue);
     }
 
-    private Pair min(Tile[][] currentBoard, byte currentColor, byte depth) {
+    private Pair min(Tile[][] currentBoard, byte currentColor, byte depth, int alpha, int beta) {
 
         if (CheckTerminal(currentBoard))
             return new Pair(null, Integer.MAX_VALUE);
@@ -105,10 +108,14 @@ public class Halma {
 
         int bestMoveValue = Integer.MAX_VALUE;
         for (Move move : possibleMoves) {
-            Pair temp = max(board.doMove(move, currentBoard), (byte) (3 - currentColor), (byte) (depth + 1));
+            Pair temp = max(board.doMove(move, currentBoard), (byte) (3 - currentColor), (byte) (depth + 1), alpha, beta);
             if (temp.value < bestMoveValue) {
                 bestMoveValue = temp.value;
                 bestMove = move;
+                if(beta > bestMoveValue)
+                    beta = bestMoveValue;
+                if(beta <= alpha)
+                    break;
             }
         }
         return new Pair(bestMove, bestMoveValue);
