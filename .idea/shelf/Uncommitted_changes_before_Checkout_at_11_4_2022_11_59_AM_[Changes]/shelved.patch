@@ -1,0 +1,203 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"8403c0f4-1e3b-4bc6-973a-7c3cc420c575\" name=\"Changes\" comment=\"Trying to fix the bug in the algorithm by considering player turn.\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/out/production/untitled104/com/company/Board.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/out/production/untitled104/com/company/GUI.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/out/production/untitled104/com/company/Halma$1.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/out/production/untitled104/com/company/Halma$2.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/out/production/untitled104/com/company/Halma.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/out/production/untitled104/com/company/Main.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/out/production/untitled104/com/company/Move.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/out/production/untitled104/com/company/Tile.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/com/company/Halma.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/com/company/Halma.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"6-automate-game-process\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitSEFilterConfiguration\">\r\n    <file-type-list>\r\n      <filtered-out-file-type name=\"LOCAL_BRANCH\" />\r\n      <filtered-out-file-type name=\"REMOTE_BRANCH\" />\r\n      <filtered-out-file-type name=\"TAG\" />\r\n      <filtered-out-file-type name=\"COMMIT_BY_MESSAGE\" />\r\n    </file-type-list>\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2GzawDiRuE5HygzgzirB0wjXlcz\" />\r\n  <component name=\"ProjectView\">\r\n    <navigator currentView=\"ProjectPane\" proportions=\"\" version=\"1\" splitterProportion=\"0.5\">\r\n      <flattenPackages />\r\n      <showMembers />\r\n      <showModules />\r\n      <showLibraryContents />\r\n      <hideEmptyPackages />\r\n      <abbreviatePackageNames />\r\n      <autoscrollToSource />\r\n      <autoscrollFromSource />\r\n      <sortByType />\r\n    </navigator>\r\n    <panes>\r\n      <pane id=\"Scope\" />\r\n      <pane id=\"PackagesPane\" />\r\n      <pane id=\"ProjectPane\">\r\n        <subPane>\r\n          <PATH>\r\n            <PATH_ELEMENT>\r\n              <option name=\"myItemId\" value=\"untitled104\" />\r\n              <option name=\"myItemType\" value=\"com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode\" />\r\n            </PATH_ELEMENT>\r\n          </PATH>\r\n          <PATH>\r\n            <PATH_ELEMENT>\r\n              <option name=\"myItemId\" value=\"untitled104\" />\r\n              <option name=\"myItemType\" value=\"com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode\" />\r\n            </PATH_ELEMENT>\r\n            <PATH_ELEMENT>\r\n              <option name=\"myItemId\" value=\"untitled104\" />\r\n              <option name=\"myItemType\" value=\"com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode\" />\r\n            </PATH_ELEMENT>\r\n          </PATH>\r\n          <PATH>\r\n            <PATH_ELEMENT>\r\n              <option name=\"myItemId\" value=\"untitled104\" />\r\n              <option name=\"myItemType\" value=\"com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode\" />\r\n            </PATH_ELEMENT>\r\n            <PATH_ELEMENT>\r\n              <option name=\"myItemId\" value=\"untitled104\" />\r\n              <option name=\"myItemType\" value=\"com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode\" />\r\n            </PATH_ELEMENT>\r\n            <PATH_ELEMENT>\r\n              <option name=\"myItemId\" value=\"src\" />\r\n              <option name=\"myItemType\" value=\"com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode\" />\r\n            </PATH_ELEMENT>\r\n            <PATH_ELEMENT>\r\n              <option name=\"myItemId\" value=\"company\" />\r\n              <option name=\"myItemType\" value=\"com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode\" />\r\n            </PATH_ELEMENT>\r\n          </PATH>\r\n        </subPane>\r\n      </pane>\r\n    </panes>\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"WebServerToolWindowFactoryState\" value=\"false\" />\r\n  </component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"D:\\AI Project\\HalmaJava\\halma-java\\src\\com\\company\" />\r\n    </key>\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"D:\\AI Project\\HalmaJava\\halma-java\" />\r\n      <recent name=\"D:\\AI Project\\HalmaJava\\halma-java\\src\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"Main\" type=\"Application\" factoryName=\"Application\" temporary=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.company.Main\" />\r\n      <module name=\"untitled104\" />\r\n      <option name=\"WORKING_DIRECTORY\" value=\"file://$PROJECT_DIR$\" />\r\n      <RunnerSettings RunnerId=\"Run\" />\r\n      <ConfigurationWrapper RunnerId=\"Run\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.Main\" />\r\n        <item itemvalue=\"Application.Main\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"8403c0f4-1e3b-4bc6-973a-7c3cc420c575\" name=\"Changes\" comment=\"\" />\r\n      <created>1667394102704</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1667394102704</updated>\r\n      <workItem from=\"1667394105375\" duration=\"5422000\" />\r\n      <workItem from=\"1667495254146\" duration=\"6108000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Init\">\r\n      <created>1667394328471</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1667394328471</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Logger bug is fixed.\">\r\n      <created>1667401778438</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1667401778438</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"Remove unused code and seperate UI code.\">\r\n      <created>1667413703200</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1667413703200</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"Gui can show possible moves with gree color.\">\r\n      <created>1667420928556</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1667420928556</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"Trying to fix the bug in the algorithm by considering player turn.\">\r\n      <created>1667496714953</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1667496714953</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"6\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Init\" />\r\n    <MESSAGE value=\"Logger bug is fixed.\" />\r\n    <MESSAGE value=\"Remove unused code and seperate UI code.\" />\r\n    <MESSAGE value=\"Gui can show possible moves with gree color.\" />\r\n    <MESSAGE value=\"Trying to fix the bug in the algorithm by considering player turn.\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Trying to fix the bug in the algorithm by considering player turn.\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <line-breakpoint enabled=\"true\" type=\"java-line\">\r\n          <url>file://$PROJECT_DIR$/src/com/company/Halma.java</url>\r\n          <line>146</line>\r\n          <option name=\"timeStamp\" value=\"2\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint enabled=\"true\" type=\"java-line\">\r\n          <url>file://$PROJECT_DIR$/src/com/company/Halma.java</url>\r\n          <line>126</line>\r\n          <option name=\"timeStamp\" value=\"3\" />\r\n        </line-breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 5c036f51355d1db99b0b4b5d597ca0c60bfb07a8)
++++ b/.idea/workspace.xml	(date 1667550498175)
+@@ -1,16 +1,12 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="ChangeListManager">
+-    <list default="true" id="8403c0f4-1e3b-4bc6-973a-7c3cc420c575" name="Changes" comment="Trying to fix the bug in the algorithm by considering player turn.">
++    <list default="true" id="8403c0f4-1e3b-4bc6-973a-7c3cc420c575" name="Changes" comment="Algorithm is working now but still have a problem with different depths">
++      <change afterPath="$PROJECT_DIR$/src/com/company/Pair.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/untitled104/com/company/Board.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/untitled104/com/company/GUI.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/untitled104/com/company/Halma$1.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/untitled104/com/company/Halma$2.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/untitled104/com/company/Halma.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/untitled104/com/company/Main.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/untitled104/com/company/Move.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/untitled104/com/company/Tile.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/untitled104/com/company/Halma$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled104/com/company/Halma$1.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/untitled104/com/company/Halma$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled104/com/company/Halma$2.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/untitled104/com/company/Halma.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled104/com/company/Halma.class" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/com/company/Halma.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Halma.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+@@ -143,7 +139,8 @@
+       <option name="presentableId" value="Default" />
+       <updated>1667394102704</updated>
+       <workItem from="1667394105375" duration="5422000" />
+-      <workItem from="1667495254146" duration="6108000" />
++      <workItem from="1667495254146" duration="6449000" />
++      <workItem from="1667544574990" duration="3830000" />
+     </task>
+     <task id="LOCAL-00001" summary="Init">
+       <created>1667394328471</created>
+@@ -180,7 +177,14 @@
+       <option name="project" value="LOCAL" />
+       <updated>1667496714953</updated>
+     </task>
+-    <option name="localTasksCounter" value="6" />
++    <task id="LOCAL-00006" summary="Algorithm is working now but still have a problem with different depths">
++      <created>1667501693683</created>
++      <option name="number" value="00006" />
++      <option name="presentableId" value="LOCAL-00006" />
++      <option name="project" value="LOCAL" />
++      <updated>1667501693683</updated>
++    </task>
++    <option name="localTasksCounter" value="7" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -203,22 +207,7 @@
+     <MESSAGE value="Remove unused code and seperate UI code." />
+     <MESSAGE value="Gui can show possible moves with gree color." />
+     <MESSAGE value="Trying to fix the bug in the algorithm by considering player turn." />
+-    <option name="LAST_COMMIT_MESSAGE" value="Trying to fix the bug in the algorithm by considering player turn." />
+-  </component>
+-  <component name="XDebuggerManager">
+-    <breakpoint-manager>
+-      <breakpoints>
+-        <line-breakpoint enabled="true" type="java-line">
+-          <url>file://$PROJECT_DIR$/src/com/company/Halma.java</url>
+-          <line>146</line>
+-          <option name="timeStamp" value="2" />
+-        </line-breakpoint>
+-        <line-breakpoint enabled="true" type="java-line">
+-          <url>file://$PROJECT_DIR$/src/com/company/Halma.java</url>
+-          <line>126</line>
+-          <option name="timeStamp" value="3" />
+-        </line-breakpoint>
+-      </breakpoints>
+-    </breakpoint-manager>
++    <MESSAGE value="Algorithm is working now but still have a problem with different depths" />
++    <option name="LAST_COMMIT_MESSAGE" value="Algorithm is working now but still have a problem with different depths" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: src/com/company/Halma.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.company;\r\n\r\nimport java.awt.event.*;\r\nimport java.util.LinkedList;\r\nimport java.util.List;\r\nimport java.util.Random;\r\nimport java.util.concurrent.TimeUnit;\r\nimport javax.swing.*;\r\n\r\npublic class Halma {\r\n\r\n\r\n    private Icon empty = new ImageIcon(\"empty\");\r\n\r\n    // Coordinates and Icons for first and second click\r\n    private Icon firstSelectionIcon, secondSelectionIcon;\r\n    private int firstX, firstY, secondX, secondY, prevFirstX, prevFirstY;\r\n\r\n    private int firstSelectionLen;\r\n    private boolean firstClick = true;\r\n    private String firstSelectionStr;\r\n\r\n    private final static int maxDepth = 1;\r\n    private Board board;\r\n    private JButton jbEndTurn;\r\n    private int playerTurn = 1;\r\n    private int moveCount = 0;\r\n\r\n    // Total moves in current game\r\n    private int grandTotalMoves = 0;\r\n\r\n    private Tile[][] tiles;\r\n\r\n    GUI gameUI = new GUI();\r\n\r\n    public Halma() {\r\n        tiles = new Tile[8][8];\r\n        playerTurn = 1;\r\n        assignCoordinates();\r\n\r\n    }\r\n\r\n    private void assignCoordinates() {\r\n        for (int i = 0; i < 8; i++) {\r\n            for (int j = 0; j < 8; j++) {\r\n                tiles[i][j] = new Tile(i, j);\r\n\r\n                if ((i + j) <= 3) {\r\n                    tiles[i][j].color = 1;\r\n                    tiles[i][j].zone = 1;\r\n                } else if ((i + j) >= 11) {\r\n                    tiles[i][j].color = 2;\r\n                    tiles[i][j].zone = 2;\r\n                }\r\n            }\r\n        }\r\n    }\r\n\r\n    public void RunGame() {\r\n        board = new Board(tiles);\r\n\r\n        GUI jk = new GUI();\r\n        jk.CreateBoard();\r\n        jk.CreateTextBoxArea();\r\n        gameUI = jk;\r\n\r\n        setUpGame();\r\n        turnButton();\r\n\r\n        // main layout\r\n        jk.setTitle(\"Halma\");\r\n        jk.setVisible(true);\r\n        jk.pack();\r\n        jk.setSize(648, 800);\r\n        jk.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // closes frame\r\n        jk.setLocationRelativeTo(null);\r\n        jk.setVisible(true); // makes HalmaBoard visible\r\n        startGame();\r\n    }\r\n\r\n    public void setUpGame() {\r\n\r\n        gameUI.SetCampColors();\r\n        gameUI.AddMarbles();\r\n//        givePieceMoves();\r\n        gameUI.AddFrame();\r\n    }\r\n\r\n    private void startGame() {\r\n        if (playerTurn == 1)\r\n            doRandomAction(playerTurn);\r\n        else {\r\n            movePiece(doMinMax());\r\n        }\r\n\r\n        //doRandomAction(playerTurn);\r\n\r\n        try {\r\n            TimeUnit.MILLISECONDS.sleep(10);\r\n        } catch (Exception e) {\r\n\r\n        }\r\n        startGame();\r\n    }\r\n\r\n    private Move doMinMax() {\r\n        var possibleMoves = createPossibleMoves(tiles, playerTurn);\r\n        Move bestMove = null;\r\n        int bestMoveValue = Integer.MIN_VALUE;\r\n        for (Move move : possibleMoves) {\r\n            int temp = min(board.doMove(move, tiles), 3 - playerTurn, 1);\r\n            if (temp > bestMoveValue) {\r\n                bestMove = move;\r\n                bestMoveValue = temp;\r\n            }\r\n        }\r\n        if (bestMove == null)\r\n            return possibleMoves.get(new Random().nextInt(possibleMoves.size()));\r\n\r\n        gameUI.PrintText(\"Value: \" + bestMoveValue + \"\\n\");\r\n        return bestMove;\r\n    }\r\n\r\n    private int min(Tile[][] currentBoard, int currentColor, int depth) {\r\n\r\n        if (CheckTerminal(currentBoard))\r\n            return Integer.MAX_VALUE;\r\n\r\n        if (depth == maxDepth)\r\n            return evaluate(currentBoard, currentColor);\r\n\r\n        List<Move> possibleMoves = createPossibleMoves(currentBoard, currentColor);\r\n\r\n        int bestMoveValue = Integer.MAX_VALUE;\r\n        for (Move move : possibleMoves) {\r\n            int temp = max(board.doMove(move, tiles), 3 - currentColor, depth + 1);\r\n            if (temp < bestMoveValue) {\r\n                bestMoveValue = temp;\r\n            }\r\n        }\r\n        return bestMoveValue;\r\n    }\r\n\r\n    private int max(Tile[][] currentBoard, int currentColor, int depth) {\r\n\r\n        if (CheckTerminal(currentBoard))\r\n            return Integer.MIN_VALUE;\r\n\r\n        if (depth == maxDepth)\r\n            return evaluate(currentBoard, currentColor);\r\n\r\n        List<Move> possibleMoves = createPossibleMoves(currentBoard, currentColor);\r\n\r\n        int bestMoveValue = Integer.MIN_VALUE;\r\n        for (Move move : possibleMoves) {\r\n            int temp = min(board.doMove(move, tiles), 3 - currentColor, depth + 1);\r\n            if (temp > bestMoveValue) {\r\n                bestMoveValue = temp;\r\n            }\r\n        }\r\n        return bestMoveValue;\r\n    }\r\n\r\n    private int evaluate(Tile[][] currentBoard, int currentColor) {\r\n        int score = 0;\r\n        for (int i = 0; i < currentBoard.length; i++) {\r\n            for (int j = 0; j < currentBoard.length; j++) {\r\n                if (currentBoard[i][j].color == playerTurn) {\r\n\r\n                    score += (7 - i);\r\n                    score += (7 - j);\r\n\r\n\r\n                } else if (currentBoard[i][j].color == (3-playerTurn)) {\r\n\r\n                    score -= i;\r\n                    score -= j;\r\n\r\n                }\r\n            }\r\n        }\r\n        return score;\r\n    }\r\n\r\n\r\n    private void doRandomAction(int playerTurn) {\r\n\r\n        var possibleMoves = createPossibleMoves(tiles, playerTurn);\r\n        var random = new Random().nextInt(possibleMoves.size() - 1);\r\n        firstX = possibleMoves.get(random).startPos.x;\r\n        firstY = possibleMoves.get(random).startPos.y;\r\n        secondX = possibleMoves.get(random).finalPos.x;\r\n        secondY = possibleMoves.get(random).finalPos.y;\r\n        movePiece(possibleMoves.get(random));\r\n    }\r\n\r\n    private List<Move> createPossibleMoves(Tile[][] newBoard, int currentColor) {\r\n        List<Move> possibleMoves = new LinkedList<>();\r\n        for (int i = 0; i < 8; i++)\r\n            for (int j = 0; j < 8; j++)\r\n                if (tiles[i][j].color == currentColor) {\r\n                    firstX = i;\r\n                    firstY = j;\r\n                    List<Tile> legalTiles = new LinkedList<>();\r\n                    board.findPossibleMoves(newBoard, newBoard[firstX][firstY], legalTiles, newBoard[firstX][firstY], true);\r\n                    for (Tile tile : legalTiles)\r\n                        possibleMoves.add(new Move(newBoard[i][j], tile));\r\n                }\r\n        return possibleMoves;\r\n    }\r\n\r\n    public void turnButton() {\r\n\r\n        JPanel buttonsPanel = new JPanel();\r\n        jbEndTurn = new JButton(\"End Turn\");\r\n\r\n        jbEndTurn.addActionListener(new ActionListener() {\r\n            public void actionPerformed(ActionEvent ae) {\r\n                // method that changes the players turn\r\n                if (prevFirstX <= 4 && prevFirstY <= 4 && grandTotalMoves < 2) {\r\n                    changeTurn(1);\r\n                } else if (prevFirstX <= 4 && prevFirstY <= 7 && grandTotalMoves < 2) {\r\n                    changeTurn(0);\r\n                } else {\r\n                    changeTurn(playerTurn);\r\n                }\r\n\r\n            }\r\n        });\r\n        buttonsPanel.add(jbEndTurn);\r\n        gameUI.GetJpanel().add(buttonsPanel);\r\n\r\n    }\r\n\r\n\r\n    public void givePieceMoves() {\r\n\r\n        for (int x = 0; x < gameUI.GetSquares().length; x++) {\r\n            for (int y = 0; y < gameUI.GetSquares().length; y++) {\r\n\r\n                // Add action listener to every piece in the board\r\n                gameUI.GetSquares()[x][y].addActionListener(new ActionListener() {\r\n                    public void actionPerformed(ActionEvent ae) {\r\n                        gameUI.SetCampColors();\r\n                        if (firstClick) {\r\n\r\n                            String selectionText = ((JButton) ae.getSource()).getText();\r\n                            firstSelectionIcon = ((JButton) ae.getSource()).getIcon();\r\n                            String[] arr = selectionText.split(\",\");\r\n                            firstX = Integer.parseInt(arr[0]);\r\n                            firstY = Integer.parseInt(arr[1]);\r\n\r\n                            firstSelectionStr = firstSelectionIcon.toString();\r\n                            firstSelectionLen = firstSelectionStr.length();\r\n\r\n                            if (tiles[firstX][firstY].color == (playerTurn)) {\r\n                                gameUI.PrintText(\"You have selected %s at %d, %d\\n\", firstSelectionStr, firstSelectionLen, firstX, firstY);\r\n                                Tile chosenTile = tiles[firstX][firstY];\r\n                                gameUI.ShowPossibleMoves(board.findPossibleMoves(tiles, chosenTile, null, chosenTile, true));\r\n                                firstClick = false;\r\n                            } else {\r\n                                gameUI.PrintText(\"You have selected an empty spot.\\n\");\r\n                            }\r\n\r\n                        } else { // save information about second click\r\n                            String selectionText = ((JButton) ae.getSource()).getText();\r\n                            secondSelectionIcon = ((JButton) ae.getSource()).getIcon();\r\n                            String[] arr = selectionText.split(\",\");\r\n                            secondX = Integer.parseInt(arr[0]);\r\n                            secondY = Integer.parseInt(arr[1]);\r\n\r\n                            if (isMoveLegal()) {\r\n                                movePiece(new Move(tiles[firstX][firstY], tiles[secondX][secondY]));\r\n                                prevFirstX = firstX;\r\n                                prevFirstY = firstY;\r\n                                moveCount++;\r\n                                grandTotalMoves++;\r\n                                //todo: checks if there is a winner here\r\n                            }\r\n                            firstClick = true;\r\n                        }\r\n                    }\r\n                });\r\n            }\r\n        }\r\n    }\r\n\r\n    private boolean isMoveLegal() {\r\n        List<Tile> legalTiles = new LinkedList<>();\r\n        board.findPossibleMoves(tiles, tiles[firstX][firstY], legalTiles, tiles[firstX][firstY], true);\r\n        Tile targetTile = tiles[secondX][secondY];\r\n/*        for(Move move: legalMoves)\r\n            if(move.finalPos == targetTile)\r\n                return true;*/\r\n        if (legalTiles.contains(targetTile))\r\n            return true;\r\n        return false;\r\n    }\r\n\r\n    public void changeTurn(int player) {\r\n        gameUI.PrintText(\"Player %d has ended their turn.\\n\", player, player);\r\n        moveCount = 0;\r\n        playerTurn = 3 - player;\r\n\r\n    }\r\n\r\n\r\n    public void movePiece(Move move) {\r\n        firstX = move.startPos.x;\r\n        firstY = move.startPos.y;\r\n        secondX = move.finalPos.x;\r\n        secondY = move.finalPos.y;\r\n        tiles[secondX][secondY].color = tiles[firstX][firstY].color;\r\n        tiles[firstX][firstY].color = 0;\r\n        changeTurn(playerTurn);\r\n        gameUI.UpdateGUI(tiles);\r\n    }\r\n\r\n    private boolean CheckTerminal(Tile[][] currentTiles) {\r\n\r\n        int redCounter = 0;\r\n        int blueCounter = 0;\r\n\r\n        for (int x = 0; x < 8; x++) {\r\n            for (int y = 0; y < 8; y++) {\r\n                if (currentTiles[x][y].zone == 1) {\r\n                    if (currentTiles[x][y].color == 2) {\r\n                        redCounter++;\r\n                        if (redCounter >= 10)\r\n                            return true;\r\n                    }\r\n                } else if (currentTiles[x][y].zone == 2) {\r\n                    if (currentTiles[x][y].color == 1) {\r\n                        blueCounter++;\r\n                        if (blueCounter >= 10)\r\n                            return true;\r\n                    }\r\n                }\r\n            }\r\n        }\r\n        return false;\r\n    }\r\n\r\n    private boolean CheckTerminal(Tile[][] currentTiles, int color) {\r\n\r\n        int inOpponentCampCounter = 0;\r\n\r\n        for (int x = 0; x < 8; x++) {\r\n            for (int y = 0; y < 8; y++) {\r\n                if (currentTiles[x][y].zone == (3 - color)) {\r\n                    if (currentTiles[x][y].color == color) {\r\n                        inOpponentCampCounter++;\r\n                        if (inOpponentCampCounter >= 10)\r\n                            return true;\r\n                    }\r\n                }\r\n            }\r\n        }\r\n        return false;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/com/company/Halma.java b/src/com/company/Halma.java
+--- a/src/com/company/Halma.java	(revision 5c036f51355d1db99b0b4b5d597ca0c60bfb07a8)
++++ b/src/com/company/Halma.java	(date 1667550151560)
+@@ -20,7 +20,7 @@
+     private boolean firstClick = true;
+     private String firstSelectionStr;
+ 
+-    private final static int maxDepth = 1;
++    private final static int maxDepth = 3;
+     private Board board;
+     private JButton jbEndTurn;
+     private int playerTurn = 1;
+@@ -108,10 +108,10 @@
+         Move bestMove = null;
+         int bestMoveValue = Integer.MIN_VALUE;
+         for (Move move : possibleMoves) {
+-            int temp = min(board.doMove(move, tiles), 3 - playerTurn, 1);
+-            if (temp > bestMoveValue) {
++            Pair temp = min(board.doMove(move, tiles), 3 - playerTurn, 1);
++            if (temp.value > bestMoveValue) {
+                 bestMove = move;
+-                bestMoveValue = temp;
++                bestMoveValue = temp.value;
+             }
+         }
+         if (bestMove == null)
+@@ -121,44 +121,48 @@
+         return bestMove;
+     }
+ 
+-    private int min(Tile[][] currentBoard, int currentColor, int depth) {
++    private Pair min(Tile[][] currentBoard, int currentColor, int depth) {
+ 
+         if (CheckTerminal(currentBoard))
+-            return Integer.MAX_VALUE;
++            return new Pair(null, Integer.MAX_VALUE);
+ 
+         if (depth == maxDepth)
+-            return evaluate(currentBoard, currentColor);
++            return new Pair(null, evaluate(currentBoard, currentColor));
+ 
+         List<Move> possibleMoves = createPossibleMoves(currentBoard, currentColor);
++        Move bestMove = null;
+ 
+         int bestMoveValue = Integer.MAX_VALUE;
+         for (Move move : possibleMoves) {
+-            int temp = max(board.doMove(move, tiles), 3 - currentColor, depth + 1);
+-            if (temp < bestMoveValue) {
+-                bestMoveValue = temp;
++            Pair temp = max(board.doMove(move, tiles), 3 - currentColor, depth + 1);
++            if (temp.value < bestMoveValue) {
++                bestMoveValue = temp.value;
++                bestMove = move;
+             }
+         }
+-        return bestMoveValue;
++        return new Pair(bestMove,bestMoveValue);
+     }
+ 
+-    private int max(Tile[][] currentBoard, int currentColor, int depth) {
++    private Pair max(Tile[][] currentBoard, int currentColor, int depth) {
+ 
+         if (CheckTerminal(currentBoard))
+-            return Integer.MIN_VALUE;
++            return new Pair(null, Integer.MIN_VALUE);
+ 
+         if (depth == maxDepth)
+-            return evaluate(currentBoard, currentColor);
++            return new Pair(null, evaluate(currentBoard, currentColor));
+ 
+         List<Move> possibleMoves = createPossibleMoves(currentBoard, currentColor);
+-
++        Move bestMove = null;
+         int bestMoveValue = Integer.MIN_VALUE;
+         for (Move move : possibleMoves) {
+-            int temp = min(board.doMove(move, tiles), 3 - currentColor, depth + 1);
+-            if (temp > bestMoveValue) {
+-                bestMoveValue = temp;
++            Pair temp = min(board.doMove(move, tiles), 3 - currentColor, depth + 1);
++            if (temp.value > bestMoveValue) {
++                bestMoveValue = temp.value;
++                bestMove = move;
+             }
+         }
+-        return bestMoveValue;
++
++        return new Pair(bestMove,bestMoveValue);
+     }
+ 
+     private int evaluate(Tile[][] currentBoard, int currentColor) {
+Index: src/com/company/Pair.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/com/company/Pair.java b/src/com/company/Pair.java
+new file mode 100644
+--- /dev/null	(date 1667550124725)
++++ b/src/com/company/Pair.java	(date 1667550124725)
+@@ -0,0 +1,12 @@
++package com.company;
++
++public class Pair {
++    public Move move = null;
++    public int value = 0;
++
++    public Pair(Move move, int value) {
++        this.move = move;
++        this.value = value;
++    }
++
++}
